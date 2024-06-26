@@ -1,7 +1,7 @@
 name: my-ui-library
 
 services:
-  client-prod:
+  app:
     image: anonuevoroy/my-ui-library:latest
     ports:
       - 9000:9000
