@@ -1,20 +1,21 @@
 version: '3.8'
-
-name: 
+# name: my-ui-library
 
 services:
-  client-dev:
-    build:  
-      context: .
-      dockerfile: Dockerfile.dev
-    ports:
-      - 3000:3000
-    volumes:
-      - .:/app
-      - /app/node_modules  
+  # client-dev:
+  #   build:  
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - .:/app
+  #     - /app/node_modules  
   client-prod:
+    image: my-ui-library-prod
+    container_name: my-ui-library-prod
     build:  
       context: .
       dockerfile: Dockerfile.prod
     ports:
-      - 4000:4000
+      - 9000:9000
