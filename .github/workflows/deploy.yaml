@@ -39,12 +39,13 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
 
-      - name: Copy Docker Compose & Script to Server via SSH 
+      - name: Copy Docker Compose & Script to Server via SSH
         uses: appleboy/scp-action@v0.1.7
         with: 
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
           source: 'server/docker-compose.yaml,scripts/deploy.sh'
           target: '/root'
 
@@ -54,4 +55,5 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
           script: sh /root/scripts/deploy.sh
