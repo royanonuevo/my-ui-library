@@ -32,13 +32,14 @@ jobs:
 
   deploy:
     needs: [build-and-push]
+    name: deploy image
     runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
         uses: actions/checkout@v3
 
-      - name: Copy Docker Compose & Script to Server
+      - name: Copy Docker Compose & Script to Server via SSH 
         uses: appleboy/scp-action@v0.1.7
         with: 
           host: ${{ secrets.SSH_HOST }}
@@ -46,7 +47,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: 'server/docker-compose.yaml,scripts/deploy.sh'
           target: '/root'
-          
+
       - name: SSH and Deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
