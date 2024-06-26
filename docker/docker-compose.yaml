@@ -1,0 +1,7 @@
+name: my-ui-library
+
+services:
+  client-prod:
+    image: anonuevoroy/my-ui-library-prod
+    ports:
+      - 9000:9000
