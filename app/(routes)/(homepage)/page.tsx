@@ -56,7 +56,6 @@ export default function Page () {
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className='grid flex-col gap-y-5 text-sm'>
-
             <div>
               {/* row start */}
               <div className='grid grid-cols-2 gap-4 mb-4'>
@@ -64,8 +63,8 @@ export default function Page () {
                 <div>{ displayInput('email') }</div>
                 <div>{ displayInput('password') }</div>
                 <div>{ displayInput('password2') }</div>
-                <div>{ displayInput('readOnly') }</div>
-                <div>{ displayInput('disabled') }</div>
+                <div>{ displayInput('readOnlyInput') }</div>
+                <div>{ displayInput('disabledInput') }</div>
                 <div>{ displayInput('appendLeftContent') }</div>
                 <div>{ displayInput('appendRightContent') }</div>
               </div>

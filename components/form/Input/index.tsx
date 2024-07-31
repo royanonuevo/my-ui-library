@@ -88,7 +88,7 @@ const Input = forwardRef(({
     inputProps = {
       ...inputProps,
       ...register(fieldArrayName || name, {
-        disabled: otherProps?.disabled
+        // disabled: otherProps?.disabled
       })
     }
   }

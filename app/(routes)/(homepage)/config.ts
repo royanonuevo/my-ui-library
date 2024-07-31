@@ -3,36 +3,41 @@ import { z } from 'zod'
 
 export const formSchema = z.object({
   email: z.string().min(1, {
-    message: 'Mandatory Field',
-  }).email(),
+      message: 'Mandatory Field',
+    }).email(),
   name: z.string().min(1, {
-    message: 'Mandatory Field',
-  }),
+      message: 'Mandatory Field',
+    }),
   password: z.string().min(1, {
-    message: 'Mandatory Field',
-  }),
-  password2: z.string().min(1, {
-    message: 'Mandatory Field',
-  }),
-  readOnly: z.string(),
-  disabled: z.string(),
-  appendLeftContent: z.string().min(1, {
-    message: 'Mandatory Field',
-  }),
+      message: 'Mandatory Field',
+    }).max(5),
+  password2: 
+    z.string()
+    .min(1, {
+      message: 'Mandatory Field',
+    }),
+  readOnlyInput: z.string(),
+  disabledInput: z.string().min(1, {
+      message: 'Mandatory Field',
+    }),
+  appendLeftContent: z.string().min(3),
   appendRightContent: z.string().min(1, {
-    message: 'Mandatory Field',
-  }),
+      message: 'Mandatory Field',
+    }),
 
-  isDisableFields: z.boolean()
+  isDisableFields: z.boolean() // use only for disabling fields, not part of form data
+}).refine((values) => values.password === values.password2, {
+  message: 'Passwords don\'t match',
+  path: ['password2'],
 })
 
 export const defaultValues: z.infer<typeof formSchema> = {
-  name: '',
+  name: 'Jay Smith',
   email: '',
   password: '',
   password2: '',
-  readOnly: 'this is a read-only input',
-  disabled: 'this is a disabled input',
+  readOnlyInput: 'this is a read-only input',
+  disabledInput: 'this is a disabled input',
   appendLeftContent: '',
   appendRightContent: '',
   
@@ -87,20 +92,20 @@ export const formConfig = [
     }
   },
   {
-    name: 'readOnly',
+    name: 'readOnlyInput',
     fieldProps: {
       type: 'input',
-      label: 'ReadOnly',
+      label: 'ReadOnly Input',
       placeholder: 'Ex. of read-only',
       readOnly: true,
       disabled
     }
   },
   {
-    name: 'disabled',
+    name: 'disabledInput',
     fieldProps: {
       type: 'input',
-      label: 'Disabled',
+      label: 'Disabled Input',
       placeholder: '',
       readOnly: false,
       disabled: true
