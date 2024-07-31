@@ -66,8 +66,8 @@ export default function Page () {
                 <div>{ displayInput('password2') }</div>
                 <div>{ displayInput('readOnly') }</div>
                 <div>{ displayInput('disabled') }</div>
-                <div>{ displayInput('appendRightContent') }</div>
                 <div>{ displayInput('appendLeftContent') }</div>
+                <div>{ displayInput('appendRightContent') }</div>
               </div>
               {/* row end */}
             </div>
