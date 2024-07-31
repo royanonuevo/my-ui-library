@@ -178,7 +178,7 @@ const Input = forwardRef(({
                 icon={showPassword? faEyeSlash : faEye}
                 className='mr-2'
               /> */}
-              { showPassword? 'show' : 'hide' }
+              { showPassword? 'hide' : 'show' }
             </span>
           )
         }
