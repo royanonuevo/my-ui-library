@@ -110,7 +110,7 @@ export const formConfig = [
       placeholder: 'Enter text',
       readOnly: false,
       disabled,
-      appendRightContent: 'left-content'
+      appendLeftContent: 'left-content'
     }
   },
   {
