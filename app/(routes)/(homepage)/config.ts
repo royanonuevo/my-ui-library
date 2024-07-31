@@ -16,8 +16,12 @@ export const formSchema = z.object({
   }),
   readOnly: z.string(),
   disabled: z.string(),
-  appendLeftContent: z.string(),
-  appendRightContent: z.string(),
+  appendLeftContent: z.string().min(1, {
+    message: 'Mandatory Field',
+  }),
+  appendRightContent: z.string().min(1, {
+    message: 'Mandatory Field',
+  }),
 
   isDisableFields: z.boolean()
 })
