@@ -62,6 +62,12 @@ export default function Page () {
               <div className='grid grid-cols-2 gap-4 mb-4'>
                 <div>{ displayInput('name') }</div>
                 <div>{ displayInput('email') }</div>
+                <div>{ displayInput('password') }</div>
+                <div>{ displayInput('password2') }</div>
+                <div>{ displayInput('readOnly') }</div>
+                <div>{ displayInput('disabled') }</div>
+                <div>{ displayInput('appendRightContent') }</div>
+                <div>{ displayInput('appendLeftContent') }</div>
               </div>
               {/* row end */}
             </div>

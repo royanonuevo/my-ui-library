@@ -95,7 +95,7 @@ const Input = forwardRef(({
   const hasError = error? true : false
 
   useEffect(() => {
-    if (debounceDuration === 0) return // dont run debounce
+    if (debounceDuration === 0) return // don't run debounce
 
     const timeout = setTimeout(() => {
       const SyntheticBaseEvent = {
@@ -167,7 +167,7 @@ const Input = forwardRef(({
         {
           togglePassword === true && (
             <span 
-              className={cn('mr-4 text-grey-400 cursor-pointer', {
+              className={cn('mr-4 text-grey-400 cursor-pointer text-[10px]', {
                 'text-grey-300 bg-grey-200': otherProps?.disabled
               })}
               onClick={() => {
@@ -178,7 +178,7 @@ const Input = forwardRef(({
                 icon={showPassword? faEyeSlash : faEye}
                 className='mr-2'
               /> */}
-              Icon
+              { showPassword? 'show' : 'hide' }
             </span>
           )
         }
