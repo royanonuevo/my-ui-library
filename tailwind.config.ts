@@ -56,11 +56,21 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        error: {
+
+        // custom colors
+        'app-error': {
           100: '#fdd4d6',
           DEFAULT: '#f72834',
           300: '#94181f'
         },
+        'app-disabled': {
+          DEFAULT: '#9ca3af'
+        },
+        'app-border': {
+          // DEFAULT: '#E5E7EB',
+          // DEFAULT: 'blue',
+          DEFAULT: "hsl(var(--border))"
+        }
       },
       borderRadius: {
         lg: "var(--radius)",

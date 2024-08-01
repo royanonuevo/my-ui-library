@@ -2,8 +2,8 @@ import FieldController from './FieldController'
 
 // import AutoComplete from './AutoComplete'
 import Input from './Input'
-// import DropDown from './DropDown'
-// import DropDown2 from './DropDown2'
+import DropDown from './DropDown'
+import DropDown2 from './DropDown2'
 // import SearchTags from './SearchTags'
 import CheckBox from './CheckBox'
 // import TextArea from './TextArea'
@@ -13,8 +13,8 @@ import CheckBox from './CheckBox'
 export {
   FieldController,
   Input,
-  // DropDown,
-  // DropDown2,
+  DropDown,
+  DropDown2,
   CheckBox,
   // AutoComplete,
   // SearchTags,

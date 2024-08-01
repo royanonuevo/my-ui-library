@@ -1,8 +1,8 @@
 import { 
   Input,
   // CheckBox,
-  // DropDown,
-  // DropDown2,
+  DropDown,
+  DropDown2,
   // TextArea,
   // Slider,
   // RadioButtons,
@@ -84,70 +84,71 @@ const FieldController = ({
   }
 
   switch (type) {
-    // case 'dropdown': 
-    //   return (
-    //     <Controller
-    //       name={fieldArrayName || name}
-    //       control={control}
-    //       render={({ field }) => {
-    //         if (field.ref) {
-    //           // @ts-ignore
-    //           delete field.ref 
-    //         }
+    case 'dropdown': 
+      return (
+        <Controller
+          name={fieldArrayName || name}
+          control={control}
+          render={({ field }) => {
+            if (field.ref) {
+              // @ts-ignore
+              delete field.ref 
+            }
 
-    //         return (
-    //           <DropDown 
-    //             {...otherFieldProps}
-    //             // {...field}
-    //             label={label}
-    //             options={getOptions()}
-    //             value={value}
-    //             onChange={(o: any) => {
-    //               const keyName = fieldArrayName || name
-    //               setValue(keyName, o, {
-    //                 shouldValidate: true,
-    //                 shouldDirty: true
-    //               })
-    //             }}
-    //             onBlur={field.onBlur}
-    //             error={errorText}
-    //           />
-    //         )
-    //       }}
-    //     />
-    //   )
+            return (
+              <DropDown 
+                {...otherFieldProps}
+                // {...field}
+                label={label}
+                options={getOptions()}
+                value={value}
+                onChange={(o: any) => {
+                  const keyName = fieldArrayName || name
+                  setValue(keyName, o, {
+                    shouldValidate: true,
+                    shouldDirty: true
+                  })
+                }}
+                onBlur={field.onBlur}
+                error={errorText}
+                // disabled={isFieldDisabled}
+              />
+            )
+          }}
+        />
+      )
     
-    // case 'dropdown2': 
-    //   return (
-    //     <Controller
-    //       name={name}
-    //       control={control}
-    //       render={({ field }) => {
-    //         if (field.ref) {
-    //           // @ts-ignore
-    //           delete field.ref 
-    //         }
+    case 'dropdown2': 
+      return (
+        <Controller
+          name={name}
+          control={control}
+          render={({ field }) => {
+            if (field.ref) {
+              // @ts-ignore
+              delete field.ref 
+            }
 
-    //         return (
-    //           <DropDown2
-    //             {...otherFieldProps}
-    //             // {...field}
-    //             label={label}
-    //             options={getOptions()}
-    //             value={value}
-    //             onChange={(o: any) => {
-    //               setValue(name, o, {
-    //                 shouldValidate: true,
-    //                 shouldDirty: true
-    //               })
-    //             }}
-    //             onBlur={field.onBlur}
-    //             error={errorText}
-    //           />
-    //         )
-    //       }}
-    //     />
-    //   )
+            return (
+              <DropDown2
+                {...otherFieldProps}
+                // {...field}
+                label={label}
+                options={getOptions()}
+                value={value}
+                onChange={(o: any) => {
+                  setValue(name, o, {
+                    shouldValidate: true,
+                    shouldDirty: true
+                  })
+                }}
+                onBlur={field.onBlur}
+                error={errorText}
+              />
+            )
+          }}
+        />
+      )
 
     // case 'checkbox': 
     //   return (

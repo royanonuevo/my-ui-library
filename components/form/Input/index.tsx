@@ -1,7 +1,7 @@
 import { forwardRef, useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
+import Label from '../ui/Label'
+import ErrorText from '../ui/ErrorText'
 
 type InputProps = {
   label?: string
@@ -118,31 +118,21 @@ const Input = forwardRef(({
 
   return (
     <div className='w-full'>
-      {
-        label && (
-          <label 
-            htmlFor={name} 
-            className={cn(
-              'mb-2 block font-semibold text-sm', {
-                'text-gray-400': otherProps?.disabled
-              }
-            )}
-          >
-            { label }
-          </label> 
+      {label && (
+        <Label name={name} label={label} disabled={otherProps?.disabled} />
       )}
 
       <div
         className={cn(
           'flex items-center',
-          'w-full  bg-white',
+          'w-full bg-white',
           'focus-within:border-focus-100 placeholder:slate-gray-400 ',
           {
-            'border-error': hasError,
             // 'bg-slate-100': otherProps?.readOnly && !otherProps?.disabled,
             'bg-gray-200 cursor-not-allowed': otherProps?.disabled,
             'rounded-t-md border-b-[1px] border-b-gray-200' : variantStyle === 'dropdown-search',
-            'rounded-md border-[1px] ui-border' : variantStyle === 'default'
+            'rounded-md border-[1px] border-solid border-app-border' : variantStyle === 'default',
+            'border-app-error': hasError,
           }
         )}
       >
@@ -184,15 +174,7 @@ const Input = forwardRef(({
         }
 
       </div>
-      { hasError && showErrorMessages? (
-        <span className={cn(
-          'flex items-center text-xs text-error mt-1', {
-          // 'text-sm': variantSize === 'small',
-          // 'text-base': variantSize === 'medium'
-          })}>
-          { error }
-        </span>
-      ) : null}
+      { hasError && showErrorMessages? ( <ErrorText error={error} />) : null}
     </div>
   )
 })

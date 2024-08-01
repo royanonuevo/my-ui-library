@@ -67,3 +67,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .app-box-shadow {
+    box-shadow: 0px 4px 12px 0px rgba(16, 18, 33, 0.12);
+  }
+
+  .app-input {
+    background-color: #fff;
+  }
+  .app-input-disabled {
+    background-color: theme('colors.gray.200') ;
+  }
+
+  .app-field.disabled {
+    color: theme('colors.gray.400')
+  }
+}
