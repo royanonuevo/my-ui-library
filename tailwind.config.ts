@@ -59,17 +59,17 @@ const config = {
 
         // custom colors
         'app-error': {
-          100: '#fdd4d6',
-          DEFAULT: '#f72834',
-          300: '#94181f'
+          DEFAULT: '#f72834'
         },
         'app-disabled': {
-          DEFAULT: '#9ca3af'
+          DEFAULT: '#9ca3af',
+          inputs: '#e2e8f0'
         },
         'app-border': {
-          // DEFAULT: '#E5E7EB',
-          // DEFAULT: 'blue',
-          DEFAULT: "hsl(var(--border))"
+          DEFAULT: '#e5e7eb',
+        },
+        'app-placeholder': {
+          DEFAULT: "#9ca3af"
         }
       },
       borderRadius: {

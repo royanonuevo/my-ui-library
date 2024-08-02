@@ -20,7 +20,7 @@ export default function Field ({
         'w-full bg-white', {
         'rounded-md border-[1px] border-solid border-app-border': true,
         'focus-within:border-gray-400': true,
-        'bg-gray-200 cursor-not-allowed': disabled,
+        'bg-app-disabled-inputs cursor-not-allowed': disabled,
         'border-app-error': hasError,
       }, className)} 
       {...otherProps}

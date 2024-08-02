@@ -71,9 +71,9 @@ const Input = forwardRef(({
     className: cn(
       'peer w-full bg-white rounded-md flex-1',
       'focus:outline-none',
-      'placeholder:text-grey-400',
+      'placeholder:text-app-placeholder',
       {
-        'cursor-not-allowed bg-grey-200 text-grey-300': otherProps?.disabled,
+        'cursor-not-allowed bg-app-disabled-inputs2': otherProps?.disabled,
         'text-sm py-[8px] px-[12px]': variantSize === 'small',
         'text-base py-[10px] px-[16px]': variantSize === 'medium',
         'pl-[7px]': appendLeftContent,
@@ -91,6 +91,13 @@ const Input = forwardRef(({
       })
     }
   }
+  if (appendLeftContent || appendRightContent) {
+    inputProps = {
+      ...inputProps,
+      autoComplete: 'off'
+    }
+  }
+
   const hasError = error? true : false
 
   useEffect(() => {
@@ -127,9 +134,7 @@ const Input = forwardRef(({
       >
         <div className='flex items-center'>
           { appendLeftContent && (
-            <span className={cn('ml-4 text-grey-400', {
-              'text-grey-300 bg-grey-200': otherProps?.disabled
-            })}>
+            <span className='ml-4 text-gray-400'>
               { appendLeftContent }
             </span>
           )}
@@ -137,26 +142,18 @@ const Input = forwardRef(({
           { ref? <input ref={ref} {...inputProps} /> : <input {...inputProps} /> }
 
           { appendRightContent && (
-            <span className={cn('mr-4 text-grey-400', {
-              'text-grey-300 bg-grey-200': otherProps?.disabled
-            })}>
+            <span className='mr-4 text-gray-400'>
               { appendRightContent }
             </span>
           )}
 
           { togglePassword === true && (
             <span 
-              className={cn('mr-4 text-grey-400 cursor-pointer text-[10px]', {
-                'text-grey-300 bg-grey-200': otherProps?.disabled
-              })}
+              className='mr-4 text-gray-400 cursor-pointer text-[10px]'
               onClick={() => {
                 setShowPassword(!showPassword)
               }}
             >
-              {/* <FontAwesomeIcon 
-                icon={showPassword? faEyeSlash : faEye}
-                className='mr-2'
-              /> */}
               { showPassword? 'hide' : 'show' }
             </span>
           )}

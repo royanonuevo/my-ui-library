@@ -25,7 +25,7 @@ const Controller = forwardRef(({
   readOnly
 }: ControllerProps, ref: any) => {
 
-  const renderPlaceholder = () => <span className='text-grey-400'>{ placeholder }</span>
+  const renderPlaceholder = () => <span className='text-app-placeholder'>{ placeholder }</span>
 
   const renderValue = () => {
     if (returnType === RETURN_TYPE_VALUE) {
@@ -47,23 +47,23 @@ const Controller = forwardRef(({
             value.map((option: SelectOption) => {
               return (
                 <div 
-                  className='p-1 rounded-md flex justify-start bg-grey-100'
+                  className='p-1 rounded-md flex justify-start bg-gray-100'
                   onClick={(e) => {
                     e.stopPropagation()
                   }}
                   key={option.value}
                 >
                   <div className={cn({
-                    'whitespace-break-spaces break-all flex-1': true,
-                    'text-gray-100': disabled
+                    'whitespace-break-spaces break-all flex-1': true
                   })}>{ option.label }</div>
 
                   <div 
                     className={cn({
-                      'w-[20px] text-[18px] text-right cursor-pointer transition hover:text-grey-400': true,
-                      'cursor-not-allowed pointer-events-none text-grey-300': disabled
+                      'w-[20px] text-[18px] text-right cursor-pointer transition text-gray-600 hover:text-gray-700': true,
+                      'cursor-not-allowed pointer-events-none text-gray-400': disabled
                     })}
                     onClick={() => changeOption(option)}
+                    title='remove'
                   >
                     &times;
                   </div>
@@ -81,10 +81,13 @@ const Controller = forwardRef(({
     <Field 
       disabled={disabled || readOnly}
       hasError={hasError}
+      className={cn({
+        'cursor-pointer': !disabled
+      })}
     >
       <div 
         className={cn(
-          'w-full py-[10px] px-[16px] pr-[10px] flex items-center outline-none cursor-pointer', {
+          'w-full py-[10px] px-[16px] pr-[10px] flex items-center outline-none', {
             '': isFocusController
           }
         )} 
