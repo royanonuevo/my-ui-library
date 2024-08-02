@@ -14,8 +14,6 @@ export default function Page () {
     resolver: zodResolver(formSchema),
     defaultValues
   })
-
-  // console.log('hookForm', hookForm)
   
   const { 
     handleSubmit, 
@@ -23,7 +21,8 @@ export default function Page () {
     setValue,
     formState: { errors } // eslint-disable-line
   } = hookForm
-
+  // console.log('errors')
+  
   const { isDisableFields } = getValues() 
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => { 
@@ -51,8 +50,8 @@ export default function Page () {
         <section className='w-full max-w-[600px] bg-white p-8 px-8 rounded-lg'>
 
           <div  className='pb-5'>
-            <div className='flex justify-between'>
-              <h1 className='text-2xl'>Dropdowns</h1>
+            <div className='flex justify-between items-center'>
+              <h1 className='text-2xl'>Dropdowns, Inputs, Checkbox</h1>
               <div className='text-sm'>
                 <CheckBox isChecked={isDisableFields} label='Disabled All Fields' onChange={toggleDisableFields} />
               </div>
@@ -68,6 +67,7 @@ export default function Page () {
                 <div className='flex flex-col gap-4'>
                   { displayInput('name') }
                   { displayInput('search') }
+                  { displayInput('agree') }
                 </div>
                 <div className='flex flex-col gap-4'>
                   { displayInput('continents') }

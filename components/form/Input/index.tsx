@@ -159,7 +159,7 @@ const Input = forwardRef(({
           )}
         </div>
       </Field>
-      { hasError && showErrorMessages? ( <ErrorText error={error} />) : null}
+      { hasError && showErrorMessages? ( <ErrorText>{ error }</ErrorText>) : null}
     </div>
   )
 })

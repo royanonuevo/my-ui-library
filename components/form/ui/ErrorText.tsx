@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils'
 
 type Props = {
-  error?: string,
+  children?: React.ReactNode,
 } & React.ComponentProps<'div'>
 
 export default function ErrorText ({
-  error = '',
+  children,
   ...otherProps
 }: Props) {
   return (
@@ -15,7 +15,7 @@ export default function ErrorText ({
       )} 
       {...otherProps}
     >
-      { error }
+      { children }
     </div>
   )
 }

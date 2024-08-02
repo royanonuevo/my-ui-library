@@ -51,7 +51,12 @@ export default function Page () {
         <section className='w-full max-w-[600px] bg-white p-8 px-8 rounded-lg'>
 
           <div className='pb-5'>
-            <CheckBox isChecked={isDisableFields} label='Disabled All Fields' onChange={toggleDisableFields} />
+            <div className='flex justify-between items-center'>
+              <h1 className='text-2xl'>Inputs</h1>
+              <div className='text-sm'>
+                <CheckBox isChecked={isDisableFields} label='Disabled All Fields' onChange={toggleDisableFields} />
+              </div>
+            </div>
             <hr className='mt-5' />
           </div>
 

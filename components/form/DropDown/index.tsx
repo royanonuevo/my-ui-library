@@ -189,7 +189,9 @@ export default function DropDown ({
         readOnly={readOnly}
       />
       
-      { hasError && (<ErrorText error={error} />) }
+      { hasError? (
+        <ErrorText>{ error }</ErrorText>
+      ): ''}
 
       {/* Options List */}
       <ul 

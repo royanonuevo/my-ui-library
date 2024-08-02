@@ -1,4 +1,6 @@
  import { cn } from '@/lib/utils'
+ import ErrorText from '../ui/ErrorText'
+ import Field from '../ui/Field'
 
 type CheckboxProps = {
   label?: string,
@@ -6,9 +8,9 @@ type CheckboxProps = {
   error?: string | boolean,
   register?: any,
   isChecked?: boolean,
-  className?: string,
   styleLabel?: React.CSSProperties
   useLabelContainer?: boolean
+  disabled?: boolean
 } & React.ComponentProps<'input'>
 
 const CheckBox = ({
@@ -18,9 +20,9 @@ const CheckBox = ({
   id,
   register,
   isChecked = false,
-  className,
   styleLabel,
   useLabelContainer = true,
+  disabled = false,
   ...otherProps
 }: CheckboxProps) => {
 
@@ -50,24 +52,28 @@ const CheckBox = ({
   const ContainerTag = useLabelContainer? 'label' : 'div'
   
   return (
-    <div className={className}>
+    <div>
       <ContainerTag
         className='grid grid-cols-[auto_1fr] gap-3 items-start relative cursor-pointer'
       >
         <input 
           {...inputProps}
+          disabled={disabled}
           type='checkbox' 
-          className='peer absolute opacity-0 -z-[1] '
+          className='peer absolute opacity-0 -z-[1] invisible'
         />
-        <div 
+        <Field 
+          disabled={disabled}
+          hasError={hasError}
+          tabIndex={0}
           className={cn({
-            'h-[24px] w-[24px] border-solid border border-grey-300 flex items-center justify-center rounded': true,
-            // 'focus-within:border-focus-100': true,
-            'after:content-[""] after:w-[6px] after:h-[13px] after:border-grey-400 after:border-solid': true,
-            'after:rotate-45 after:-mt-[3px] after:hidden after:border-t-0 after:border-r-[2px] after:border-b-[2px] after:border-l-0': true,
-            'peer-checked:bg-primary peer-checked:border-primary peer-checked:after:border-white peer-checked:after:block': true,
-            'peer-disabled:cursor-not-allowed peer-disabled:bg-grey-200 peer-disabled:border-grey-200 peer-disabled:after:border-grey-300': true,
-            'border-error': hasError,
+            'h-[20px] w-[20px] flex items-center justify-center rounded mt-[2px]': true,
+
+            'after:content-[""] after:w-[6px] after:h-[13px]': true,
+            'after:hidden after:rotate-45 after:-mt-[3px] after:border-t-0 after:border-r-[3px] after:border-b-[3px] after:border-l-0': true,
+            'peer-checked:after:block peer-checked:bg-primary peer-checked:border-primary peer-checked:after:border-white': true,
+            'peer-checked:bg-app-disabled-inputs peer-checked:border-app-disabled-inputs': disabled,
+            'peer-checked:after:border-primary': disabled,
           })} 
         />
 
@@ -75,7 +81,7 @@ const CheckBox = ({
       </ContainerTag>
 
     
-      { hasError && (<span className='text-error text-sm mt-[1px]'>{ error } </span>) }
+      { hasError && (<ErrorText>{ error }</ErrorText>) }
     </div>
   )
 }

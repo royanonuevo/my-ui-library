@@ -2,6 +2,7 @@ import { z } from 'zod'
 import { continentOptions, countryOptions } from './data'
 
 const mandatoryTxt = 'Mandatory field.'
+
 export const formSchema = z.object({
   name: z.string().min(1, {
     message: 'Mandatory Field',
@@ -9,6 +10,8 @@ export const formSchema = z.object({
   search: z.string().min(1, {
     message: 'Mandatory Field',
   }),
+  // agree: z.literal<boolean>(true, { errorMap: () => ({ message: mandatoryTxt }) }),
+  agree: z.boolean(),
   continents: z.string().or(z.number().int()),
   countries: z.any().array().min(1, mandatoryTxt),
   countries2: z.any().array().min(1, mandatoryTxt).max(3),
@@ -17,11 +20,15 @@ export const formSchema = z.object({
 }).refine((values) => values.continents !== '', {
   message: mandatoryTxt,
   path: ['continents'],
+}).refine((values) => values.agree, {
+  message: mandatoryTxt,
+  path: ['agree']
 })
 
 export const defaultValues: z.infer<typeof formSchema> = {
   name: '',
   search: '',
+  agree: false,
   continents: '',
   countries: [],
   countries2: [],
@@ -51,6 +58,15 @@ export const formConfig = [
       type: 'input',
       label: 'Search',
       placeholder: 'Search..',
+      readOnly: false,
+      disabled
+    }
+  },
+  {
+    name: 'agree',
+    fieldProps: {
+      type: 'checkbox',
+      label: 'I agree to Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
       readOnly: false,
       disabled
     }

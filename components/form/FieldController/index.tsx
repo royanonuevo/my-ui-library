@@ -1,6 +1,6 @@
 import { 
   Input,
-  // CheckBox,
+  CheckBox,
   DropDown,
   // DropDown2,
   // TextArea,
@@ -150,16 +150,16 @@ const FieldController = ({
     //     />
     //   )
 
-    // case 'checkbox': 
-    //   return (
-    //     <CheckBox 
-    //       {...otherFieldProps}
-    //       name={name}
-    //       label={label}
-    //       error={errorText}
-    //       register={register}
-    //     />
-    //   )
+    case 'checkbox': 
+      return (
+        <CheckBox 
+          {...otherFieldProps}
+          name={name}
+          label={label}
+          error={errorText}
+          register={register}
+        />
+      )
 
     // case 'slider': 
     //   return (
