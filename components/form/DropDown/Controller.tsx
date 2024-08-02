@@ -7,6 +7,7 @@ import {
 } from './types'
 import { cn } from '@/lib/utils'
 import IconChevronDown from './IconChevronDown'
+import Field from '../ui/Field'
 
 const Controller = forwardRef(({
   value,
@@ -77,25 +78,27 @@ const Controller = forwardRef(({
   }
   
   return (
-    <div 
-      className={cn(
-        'w-full bg-white py-[10px] px-[16px] pr-[10px] rounded-md border border-solid border-app-border flex items-center outline-none cursor-pointer', {
-          'focus-within:border-focus-100': true,
-          '': isFocusController,
-          'border-app-error border': hasError,
-          'bg-grey-200 cursor-not-allowed': disabled || readOnly
-        }
-      )} 
-      tabIndex={0} 
-      ref={ref}
-      onClick={handleClick}
-      style={styleController}
+    <Field 
+      disabled={disabled || readOnly}
+      hasError={hasError}
     >
-      <div className={cn('flex-1 pr-3 overflow-hidden text-inherit')}>
-        { renderValue() }
+      <div 
+        className={cn(
+          'w-full py-[10px] px-[16px] pr-[10px] flex items-center outline-none cursor-pointer', {
+            '': isFocusController
+          }
+        )} 
+        tabIndex={0} 
+        ref={ref}
+        onClick={handleClick}
+        style={styleController}
+      >
+        <div className={cn('flex-1 pr-3 overflow-hidden text-inherit')}>
+          { renderValue() }
+        </div>
+        <IconChevronDown />
       </div>
-      <IconChevronDown />
-    </div>
+    </Field>
   )
 })
 

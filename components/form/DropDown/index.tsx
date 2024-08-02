@@ -29,11 +29,11 @@ export default function DropDown ({
   error = '',
   onChange,
   onBlur,
-  disabled,
-  readOnly,
+  disabled = false,
+  readOnly = false,
   maxOptionsHeight = '15rem',
   styleController,
-  styleLabel = {}
+  styleLabel = { cursor: 'default'}
 }: SelectProps) {
   const controllerRef = useRef<HTMLDivElement>(null)
   const [isOpen, setIsOpen] = useState(false)
@@ -165,8 +165,7 @@ export default function DropDown ({
 
             onClick={() => focusController()}
             tabIndex={-1} // tricks: so that onKeyDown will work when this is clicked
-            // style={styleLabel}
-            style={{ cursor: 'initial'}}
+            style={styleLabel}
           /> 
         ) : ''
       }

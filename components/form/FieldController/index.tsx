@@ -2,7 +2,7 @@ import {
   Input,
   // CheckBox,
   DropDown,
-  DropDown2,
+  // DropDown2,
   // TextArea,
   // Slider,
   // RadioButtons,
@@ -118,37 +118,37 @@ const FieldController = ({
         />
       )
     
-    case 'dropdown2': 
-      return (
-        <Controller
-          name={name}
-          control={control}
-          render={({ field }) => {
-            if (field.ref) {
-              // @ts-ignore
-              delete field.ref 
-            }
+    // case 'dropdown2': 
+    //   return (
+    //     <Controller
+    //       name={name}
+    //       control={control}
+    //       render={({ field }) => {
+    //         if (field.ref) {
+    //           // @ts-ignore
+    //           delete field.ref 
+    //         }
 
-            return (
-              <DropDown2
-                {...otherFieldProps}
-                // {...field}
-                label={label}
-                options={getOptions()}
-                value={value}
-                onChange={(o: any) => {
-                  setValue(name, o, {
-                    shouldValidate: true,
-                    shouldDirty: true
-                  })
-                }}
-                onBlur={field.onBlur}
-                error={errorText}
-              />
-            )
-          }}
-        />
-      )
+    //         return (
+    //           <DropDown2
+    //             {...otherFieldProps}
+    //             // {...field}
+    //             label={label}
+    //             options={getOptions()}
+    //             value={value}
+    //             onChange={(o: any) => {
+    //               setValue(name, o, {
+    //                 shouldValidate: true,
+    //                 shouldDirty: true
+    //               })
+    //             }}
+    //             onBlur={field.onBlur}
+    //             error={errorText}
+    //           />
+    //         )
+    //       }}
+    //     />
+    //   )
 
     // case 'checkbox': 
     //   return (

@@ -54,6 +54,6 @@ export type ControllerProps = {
   isFocusController: boolean
   styleController: React.CSSProperties | undefined
   hasError: boolean
-  disabled?: boolean
-  readOnly?: boolean
+  disabled: boolean
+  readOnly: boolean
 } 

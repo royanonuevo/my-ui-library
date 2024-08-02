@@ -65,10 +65,15 @@ export default function Page () {
             <div>
               {/* row start */}
               <div className='grid grid-cols-2 gap-4 mb-4'>
-                <div>{ displayInput('name') }</div>
-                <div>{ displayInput('continents') }</div>
-                <div>{ displayInput('countries') }</div>
-                <div>{ displayInput('countries2') }</div>
+                <div className='flex flex-col gap-4'>
+                  { displayInput('name') }
+                  { displayInput('search') }
+                </div>
+                <div className='flex flex-col gap-4'>
+                  { displayInput('continents') }
+                  { displayInput('countries') }
+                  { displayInput('countries2') }
+                </div>
               </div>
               {/* row end */}
 

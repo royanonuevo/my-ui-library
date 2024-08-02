@@ -2,6 +2,7 @@ import { forwardRef, useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import Label from '../ui/Label'
 import ErrorText from '../ui/ErrorText'
+import Field from '../ui/Field'
 
 type InputProps = {
   label?: string
@@ -15,7 +16,6 @@ type InputProps = {
   appendLeftContent?: React.ReactElement | null
   showErrorMessages?: boolean
   variantSize?: 'small' | 'medium'
-  variantStyle?: 'default' | 'dropdown-search'
   togglePassword?: boolean
   debounceDuration?: number
   onChange?: any
@@ -34,7 +34,6 @@ const Input = forwardRef(({
   showErrorMessages = true,
   variantSize = 'medium',
   togglePassword = false,
-  variantStyle = 'default',
   debounceDuration = 0,
   ...otherProps
 }: InputProps, ref: any) => {
@@ -122,40 +121,30 @@ const Input = forwardRef(({
         <Label name={name} label={label} disabled={otherProps?.disabled} />
       )}
 
-      <div
-        className={cn(
-          'flex items-center',
-          'w-full bg-white',
-          'focus-within:border-focus-100 placeholder:slate-gray-400 ',
-          {
-            // 'bg-slate-100': otherProps?.readOnly && !otherProps?.disabled,
-            'bg-gray-200 cursor-not-allowed': otherProps?.disabled,
-            'rounded-t-md border-b-[1px] border-b-gray-200' : variantStyle === 'dropdown-search',
-            'rounded-md border-[1px] border-solid border-app-border' : variantStyle === 'default',
-            'border-app-error': hasError,
-          }
-        )}
+      <Field
+        disabled={otherProps?.disabled || false}
+        hasError={hasError}
       >
-        { appendLeftContent && (
-          <span className={cn('ml-4 text-grey-400', {
-            'text-grey-300 bg-grey-200': otherProps?.disabled
-          })}>
-            { appendLeftContent }
-          </span>
-        )}
+        <div className='flex items-center'>
+          { appendLeftContent && (
+            <span className={cn('ml-4 text-grey-400', {
+              'text-grey-300 bg-grey-200': otherProps?.disabled
+            })}>
+              { appendLeftContent }
+            </span>
+          )}
 
-        { ref? <input ref={ref} {...inputProps} /> : <input {...inputProps} /> }
+          { ref? <input ref={ref} {...inputProps} /> : <input {...inputProps} /> }
 
-        { appendRightContent && (
-          <span className={cn('mr-4 text-grey-400', {
-            'text-grey-300 bg-grey-200': otherProps?.disabled
-          })}>
-            { appendRightContent }
-          </span>
-        )}
+          { appendRightContent && (
+            <span className={cn('mr-4 text-grey-400', {
+              'text-grey-300 bg-grey-200': otherProps?.disabled
+            })}>
+              { appendRightContent }
+            </span>
+          )}
 
-        {
-          togglePassword === true && (
+          { togglePassword === true && (
             <span 
               className={cn('mr-4 text-grey-400 cursor-pointer text-[10px]', {
                 'text-grey-300 bg-grey-200': otherProps?.disabled
@@ -170,10 +159,9 @@ const Input = forwardRef(({
               /> */}
               { showPassword? 'hide' : 'show' }
             </span>
-          )
-        }
-
-      </div>
+          )}
+        </div>
+      </Field>
       { hasError && showErrorMessages? ( <ErrorText error={error} />) : null}
     </div>
   )

@@ -6,6 +6,9 @@ export const formSchema = z.object({
   name: z.string().min(1, {
     message: 'Mandatory Field',
   }),
+  search: z.string().min(1, {
+    message: 'Mandatory Field',
+  }),
   continents: z.string().or(z.number().int()),
   countries: z.any().array().min(1, mandatoryTxt),
   countries2: z.any().array().min(1, mandatoryTxt).max(3),
@@ -18,6 +21,7 @@ export const formSchema = z.object({
 
 export const defaultValues: z.infer<typeof formSchema> = {
   name: '',
+  search: '',
   continents: '',
   countries: [],
   countries2: [],
@@ -37,6 +41,16 @@ export const formConfig = [
       label: 'Name',
       appendLeftContent: 'Mr.',
       placeholder: 'Ex. John Doe',
+      readOnly: false,
+      disabled
+    }
+  },
+  {
+    name: 'search',
+    fieldProps: {
+      type: 'input',
+      label: 'Search',
+      placeholder: 'Search..',
       readOnly: false,
       disabled
     }
