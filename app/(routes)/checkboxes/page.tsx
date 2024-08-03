@@ -21,6 +21,8 @@ export default function Page () {
     setValue,
     formState: { errors } // eslint-disable-line
   } = hookForm
+
+  // console.log(getValues().ingredients)
   
   const { isDisableFields } = getValues() 
 
@@ -50,9 +52,13 @@ export default function Page () {
 
           <div  className='pb-5'>
             <div className='flex justify-between items-center'>
-              <h1 className='text-2xl'>Checkboxes</h1>
+              <h1 className='text-2xl'>Group Checkboxes</h1>
               <div className='text-sm'>
-                <CheckBox isChecked={isDisableFields} label='Disabled All Fields' onChange={toggleDisableFields} />
+                <CheckBox 
+                  value={isDisableFields} 
+                  label='Disabled All Fields' 
+                  onChange={toggleDisableFields} 
+                />
               </div>
             </div>
             <hr className='mt-5' />
@@ -63,7 +69,9 @@ export default function Page () {
             <div>
               {/* row start */}
               <div className='grid grid-cols-2 gap-4 mb-4'>
+                { displayInput('name') }
                 { displayInput('ingredients') }
+                { displayInput('search') }
               </div>
               {/* row end */}
 

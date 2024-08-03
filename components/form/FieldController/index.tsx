@@ -155,6 +155,7 @@ const FieldController = ({
               <CheckBox 
                 label={label}
                 value={value}
+                options={options || []}
                 onChange={(o: any) => {
                   const keyName = fieldArrayName || name
                   setValue(keyName, o, {

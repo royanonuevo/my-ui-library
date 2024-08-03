@@ -54,7 +54,11 @@ export default function Page () {
             <div className='flex justify-between items-center'>
               <h1 className='text-2xl'>Inputs</h1>
               <div className='text-sm'>
-                <CheckBox isChecked={isDisableFields} label='Disabled All Fields' onChange={toggleDisableFields} />
+                <CheckBox 
+                  value={isDisableFields} 
+                  label='Disabled All Fields' 
+                  onChange={toggleDisableFields} 
+                />
               </div>
             </div>
             <hr className='mt-5' />

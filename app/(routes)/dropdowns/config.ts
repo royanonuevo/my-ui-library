@@ -57,9 +57,11 @@ export const formConfig = [
     fieldProps: {
       type: 'input',
       label: 'Search',
-      placeholder: 'Search..',
+      placeholder: 'Search (disabled dpndncy)',
       readOnly: false,
-      disabled
+      disabled: (values: any, name: any) => { // eslint-disable-line
+        return values.isDisableFields === true || !values.name
+      }
     }
   },
   {
@@ -90,9 +92,11 @@ export const formConfig = [
       returnType: 'array',
       multipleSelection: false,
       disableToggleOnSelectedOption: false,
-      placeholder: 'Select countries',
+      placeholder: 'Select countries (disabled dpndncy)',
       options: countryOptions,
-      disabled
+      disabled: (values: any, name: any) => { // eslint-disable-line
+        return values.isDisableFields === true || !values.continents
+      }
     }
   },
   {

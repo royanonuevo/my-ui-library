@@ -9,9 +9,9 @@ import {
 } from './types'
 import Controller from './Controller'
 import { cn } from '@/lib/utils'
-import { isEqual, containsObject } from './utils'
-import Label from '../ui/Label'
-import ErrorText from '../ui/ErrorText'
+import { isEqual, containsObject } from '../shared/utils'
+import Label from '../shared/Label'
+import ErrorText from '../shared/ErrorText'
 
 export type { SelectOption }
 
@@ -79,7 +79,7 @@ export default function DropDown ({
     if (returnType === RETURN_TYPE_ARRAY) {
       if (multipleSelection) {
         if (containsObject(value, option)) {
-          onChange?.(value.filter(o => o !== option))
+          onChange?.(value.filter(o => !isEqual(o, option)))
         } else {
           onChange?.([...value, option])
         }

@@ -67,6 +67,7 @@ export default function Page () {
               <li>1. onBlur should work</li>
               <li>2. when click title/label will focus the field</li>
               <li>3. tab should work</li>
+              <li>4. disabled dependeny from other field should work</li>
             </ul>
           </div>
           

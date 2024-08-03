@@ -1,8 +1,8 @@
 import { forwardRef, useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
-import Label from '../ui/Label'
-import ErrorText from '../ui/ErrorText'
-import Field from '../ui/Field'
+import Label from '../shared/Label'
+import ErrorText from '../shared/ErrorText'
+import Field from '../shared/Field'
 
 type InputProps = {
   label?: string

@@ -1,16 +1,22 @@
 import { z } from 'zod'
 
-const mandatoryTxt = 'Mandatory field.'
-
 export const formSchema = z.object({
-  ingredients: z.any().array().min(1, mandatoryTxt).max(3),
+  name: z.string().min(1, {
+    message: 'Mandatory Field',
+  }),
+  search: z.string().min(1, {
+    message: 'Mandatory Field',
+  }),
+  ingredients: z.any().array().min(2, 'Select at least 2 ingredients').max(4),
  
   isDisableFields: z.boolean() // use only for disabling fields, not part of form data
 })
 
 export const defaultValues: z.infer<typeof formSchema> = {
+  name: '',
+  search: '',
   ingredients: [],
-  isDisableFields: false
+  isDisableFields: false,
 }
 
 const disabled = (values: any, name: any) => { // eslint-disable-line
@@ -19,12 +25,40 @@ const disabled = (values: any, name: any) => { // eslint-disable-line
 
 export const formConfig = [
   {
+    name: 'name',
+    fieldProps: {
+      type: 'input',
+      label: 'Name',
+      appendLeftContent: 'Mr.',
+      placeholder: 'Ex. John Doe',
+      readOnly: false,
+      disabled
+    }
+  },
+  {
+    name: 'search',
+    fieldProps: {
+      type: 'input',
+      label: 'Search',
+      placeholder: 'Search',
+      readOnly: false,
+      disabled
+    }
+  },
+  {
     name: 'ingredients',
     fieldProps: {
       type: 'checkbox',
-      label: 'I agree to Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      label: 'Pick Ingredients:',
       readOnly: false,
-      disabled
+      disabled,
+      options: [
+        { label: 'Tomato', value: 'Tomato', a:false },
+        { label: 'Pepper', value: 'Pepper' },
+        { label: 'Potato', value: 'Potato' },
+        { label: 'Salt', value: 'Salt' },
+        { label: 'Vinegar', value: 'Vinegar' },
+      ]
     }
   },
 ]

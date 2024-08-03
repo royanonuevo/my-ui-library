@@ -7,7 +7,7 @@ import {
 } from './types'
 import { cn } from '@/lib/utils'
 import IconChevronDown from './IconChevronDown'
-import Field from '../ui/Field'
+import Field from '../shared/Field'
 
 const Controller = forwardRef(({
   value,
