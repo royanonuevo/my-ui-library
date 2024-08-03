@@ -90,15 +90,10 @@ const FieldController = ({
           name={fieldArrayName || name}
           control={control}
           render={({ field }) => {
-            if (field.ref) {
-              // @ts-ignore
-              delete field.ref 
-            }
-
+            // if (name === 'countries2') console.log(otherFieldProps)
             return (
               <DropDown 
                 {...otherFieldProps}
-                // {...field}
                 label={label}
                 options={getOptions()}
                 value={value}
@@ -111,7 +106,7 @@ const FieldController = ({
                 }}
                 onBlur={field.onBlur}
                 error={errorText}
-                // disabled={isFieldDisabled}
+                disabled={isFieldDisabled}
               />
             )
           }}
@@ -152,14 +147,30 @@ const FieldController = ({
 
     case 'checkbox': 
       return (
-        <CheckBox 
-          {...otherFieldProps}
-          name={name}
-          label={label}
-          error={errorText}
-          register={register}
+        <Controller
+          name={fieldArrayName || name}
+          control={control}
+          render={({ field }) => {
+            return (
+              <CheckBox 
+                label={label}
+                value={value}
+                onChange={(o: any) => {
+                  const keyName = fieldArrayName || name
+                  setValue(keyName, o, {
+                    shouldValidate: true,
+                    shouldDirty: true
+                  })
+                }}
+                onBlur={field.onBlur}
+                error={errorText}
+                disabled={isFieldDisabled}
+              />
+            )
+          }}
         />
       )
+      
 
     // case 'slider': 
     //   return (

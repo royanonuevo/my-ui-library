@@ -14,7 +14,7 @@ export const formSchema = z.object({
   agree: z.boolean(),
   continents: z.string().or(z.number().int()),
   countries: z.any().array().min(1, mandatoryTxt),
-  countries2: z.any().array().min(1, mandatoryTxt).max(3),
+  countries2: z.any().array().min(2, 'Select atleast 2 countries').max(3),
   // categories: z.any().array().min(1, mandatoryTxt),
   isDisableFields: z.boolean() // use only for disabling fields, not part of form data
 }).refine((values) => values.continents !== '', {

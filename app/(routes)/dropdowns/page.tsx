@@ -21,7 +21,9 @@ export default function Page () {
     setValue,
     formState: { errors } // eslint-disable-line
   } = hookForm
-  // console.log('errors')
+  
+  // console.log('formState', hookForm.formState.touchedFields)
+  // console.log('getValues', getValues())
   
   const { isDisableFields } = getValues() 
 
@@ -53,10 +55,19 @@ export default function Page () {
             <div className='flex justify-between items-center'>
               <h1 className='text-2xl'>Dropdowns, Inputs, Checkbox</h1>
               <div className='text-sm'>
-                <CheckBox isChecked={isDisableFields} label='Disabled All Fields' onChange={toggleDisableFields} />
+                <CheckBox 
+                  value={isDisableFields} 
+                  label='Disabled All Fields' 
+                  onChange={toggleDisableFields} 
+                />
               </div>
             </div>
             <hr className='mt-5' />
+            <ul className='text-sm'>
+              <li>1. onBlur should work</li>
+              <li>2. when click title/label will focus the field</li>
+              <li>3. tab should work</li>
+            </ul>
           </div>
           
 

@@ -1,22 +1,16 @@
 import { z } from 'zod'
-import { continentOptions, countryOptions } from './data'
 
 const mandatoryTxt = 'Mandatory field.'
 
 export const formSchema = z.object({
-  agree: z.boolean(),
+  ingredients: z.any().array().min(1, mandatoryTxt).max(3),
  
   isDisableFields: z.boolean() // use only for disabling fields, not part of form data
-}).refine((values) => values.continents !== '', {
-  message: mandatoryTxt,
-  path: ['continents'],
-}).refine((values) => values.agree, {
-  message: mandatoryTxt,
-  path: ['agree']
 })
 
 export const defaultValues: z.infer<typeof formSchema> = {
-  agree: false,
+  ingredients: [],
+  isDisableFields: false
 }
 
 const disabled = (values: any, name: any) => { // eslint-disable-line
@@ -25,7 +19,7 @@ const disabled = (values: any, name: any) => { // eslint-disable-line
 
 export const formConfig = [
   {
-    name: 'agree',
+    name: 'ingredients',
     fieldProps: {
       type: 'checkbox',
       label: 'I agree to Lorem Ipsum is simply dummy text of the printing and typesetting industry.',

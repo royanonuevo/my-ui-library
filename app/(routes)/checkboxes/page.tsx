@@ -21,7 +21,6 @@ export default function Page () {
     setValue,
     formState: { errors } // eslint-disable-line
   } = hookForm
-  // console.log('errors')
   
   const { isDisableFields } = getValues() 
 
@@ -64,7 +63,7 @@ export default function Page () {
             <div>
               {/* row start */}
               <div className='grid grid-cols-2 gap-4 mb-4'>
-                { displayInput('agree') }
+                { displayInput('ingredients') }
               </div>
               {/* row end */}
 

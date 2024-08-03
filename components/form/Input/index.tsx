@@ -91,6 +91,7 @@ const Input = forwardRef(({
       })
     }
   }
+  
   if (appendLeftContent || appendRightContent) {
     inputProps = {
       ...inputProps,
