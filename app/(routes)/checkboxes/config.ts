@@ -2,10 +2,10 @@ import { z } from 'zod'
 
 const mandatoryTxt = 'Mandatory field.'
 export const formSchema = z.object({
-  name: z.string().min(1, {
+  dummy1: z.string().min(1, {
     message: 'Mandatory Field',
   }),
-  search: z.string().min(1, {
+  dummy2: z.string().min(1, {
     message: 'Mandatory Field',
   }),
   agree: z.boolean(),
@@ -18,8 +18,8 @@ export const formSchema = z.object({
 })
 
 export const defaultValues: z.infer<typeof formSchema> = {
-  name: '',
-  search: '',
+  dummy1: '',
+  dummy2: '',
   agree: false,
   ingredients: [],
   isDisableFields: false,
@@ -31,22 +31,22 @@ const disabled = (values: any, name: any) => { // eslint-disable-line
 
 export const formConfig = [
   {
-    name: 'name',
+    name: 'dummy1',
     fieldProps: {
       type: 'input',
-      label: 'Name',
-      appendLeftContent: 'Mr.',
-      placeholder: 'Ex. John Doe',
+      label: 'Dummy1',
+      appendLeftContent: 'Dum.',
+      placeholder: 'Enter Text',
       readOnly: false,
       disabled
     }
   },
   {
-    name: 'search',
+    name: 'dummy2',
     fieldProps: {
       type: 'input',
-      label: 'Search',
-      placeholder: 'Search',
+      label: 'Dummy2',
+      placeholder: 'dummy',
       readOnly: false,
       disabled
     }

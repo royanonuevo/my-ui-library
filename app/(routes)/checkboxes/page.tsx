@@ -69,10 +69,10 @@ export default function Page () {
             <div>
               {/* row start */}
               <div className='grid grid-cols-2 gap-4 mb-4'>
-                { displayInput('name') }
+                { displayInput('dummy1') }
                 { displayInput('agree') }
                 { displayInput('ingredients') }
-                { displayInput('search') }
+                { displayInput('dummy2') }
               </div>
               {/* row end */}
 
