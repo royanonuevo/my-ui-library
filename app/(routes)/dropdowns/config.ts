@@ -4,10 +4,10 @@ import { continentOptions, countryOptions } from './data'
 const mandatoryTxt = 'Mandatory field.'
 
 export const formSchema = z.object({
-  name: z.string().min(1, {
+  dummy1: z.string().min(1, {
     message: mandatoryTxt,
   }),
-  search: z.string().min(1, {
+  dummy2: z.string().min(1, {
     message: mandatoryTxt,
   }),
   // agree: z.literal<boolean>(true, { errorMap: () => ({ message: mandatoryTxt }) }),
@@ -26,8 +26,8 @@ export const formSchema = z.object({
 })
 
 export const defaultValues: z.infer<typeof formSchema> = {
-  name: '',
-  search: '',
+  dummy1: '',
+  dummy2: '',
   agree: false,
   continents: '',
   countries: [],
@@ -42,25 +42,25 @@ const disabled = (values: any, name: any) => { // eslint-disable-line
 
 export const formConfig = [
   {
-    name: 'name',
+    name: 'dummy1',
     fieldProps: {
       type: 'input',
-      label: 'Name',
-      appendLeftContent: 'Mr.',
-      placeholder: 'Ex. John Doe',
+      label: 'Dummy1',
+      appendLeftContent: 'Dum.',
+      placeholder: 'Enter text',
       readOnly: false,
       disabled
     }
   },
   {
-    name: 'search',
+    name: 'dummy2',
     fieldProps: {
       type: 'input',
-      label: 'Search',
-      placeholder: 'Search (disabled dpndncy)',
+      label: 'Dummy2',
+      placeholder: 'dummy (disabled dpndncy)',
       readOnly: false,
       disabled: (values: any, name: any) => { // eslint-disable-line
-        return values.isDisableFields === true || !values.name
+        return values.isDisableFields === true || !values.dummy1
       }
     }
   },

@@ -53,7 +53,7 @@ export default function Page () {
 
           <div  className='pb-5'>
             <div className='flex justify-between items-center'>
-              <h1 className='text-2xl'>Dropdowns, Inputs, Checkbox</h1>
+              <h1 className='text-2xl'>Dropdowns, Checkbox</h1>
               <div className='text-sm'>
                 <CheckBox 
                   value={isDisableFields} 
@@ -77,8 +77,8 @@ export default function Page () {
               {/* row start */}
               <div className='grid grid-cols-2 gap-4 mb-4'>
                 <div className='flex flex-col gap-4'>
-                  { displayInput('name') }
-                  { displayInput('search') }
+                  { displayInput('dummy1') }
+                  { displayInput('dummy2') }
                   { displayInput('agree') }
                 </div>
                 <div className='flex flex-col gap-4'>
