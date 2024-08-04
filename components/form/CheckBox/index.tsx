@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils'
 import TickBox from './TickBox'
 import ErrorText from '../shared/ErrorText'
 import { containsObject, isEqual } from '../shared/utils'
@@ -48,6 +47,28 @@ const isOptionSelected = (option: Option) => {
   return containsObject(value, option)
 }
 
+const changeOption = (option: Option) => {
+  if (containsObject(value, option)) {
+    // console.log('1,', value)
+    onChange?.(value.filter((o: Option) => !isEqual(o, option)))
+  } else {
+    console.log('2,', value)
+    onChange?.([...value, option])
+  }
+}
+
+const handleKeyDown = (e: any) => {
+  switch(e.code) {
+    case 'Enter':
+      if (options?.length) {
+        const elementIndex = e.target?.dataset?.elementIndex
+        changeOption(options[elementIndex])
+      } else {
+        handleTick()
+      }
+      break
+  }
+}
 
 const renderTickBoxes = () => {
   if (options?.length) {
@@ -60,10 +81,15 @@ const renderTickBoxes = () => {
             disabled={disabled}
             style={styleLabel}
             errorMode={hasError}
+            className='cursor-default'
           /> 
         ): ''}
 
-        <div className='flex flex-col gap-2'>
+        <div 
+          onKeyDown={handleKeyDown} 
+          onBlur={handleBlur}
+          className='flex flex-col gap-2' 
+        >
           {
             options.map((option, index) => {
               return (
@@ -71,39 +97,35 @@ const renderTickBoxes = () => {
                   key={`checkbox-option-${option.value}-${index}`}
                   label={option.label}
                   value={isOptionSelected(option)}
-                  handleTick={() => {
-                    if (containsObject(value, option)) {
-                      console.log('option1', value)
-                      onChange?.(value.filter((o: Option) => !isEqual(o, option)))
-                    } else {
-                      console.log('option2')
-                      onChange?.([...value, option])
-                    }
-                  }}
+                  handleTick={() => { changeOption(option) }}
                   onBlur={() => {}}
                   hasError={false}
                   styleLabel={{}}
                   disabled={disabled}
+                  index={index}
                 />
               )
             })
           }
-          
         </div>
       </div>
     )
   }
 
   return (
-    <TickBox 
-      label={label}
-      value={Boolean(value)}
-      handleTick={handleTick}
-      onBlur={handleBlur}
-      hasError={hasError}
-      styleLabel={styleLabel}
-      disabled={disabled}
-    />
+    <div 
+      onKeyDown={handleKeyDown} 
+    >
+      <TickBox 
+        label={label}
+        value={Boolean(value)}
+        handleTick={handleTick}
+        onBlur={handleBlur}
+        hasError={hasError}
+        styleLabel={styleLabel}
+        disabled={disabled}
+      />
+    </div>
   )
 }
 

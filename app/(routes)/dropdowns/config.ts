@@ -5,10 +5,10 @@ const mandatoryTxt = 'Mandatory field.'
 
 export const formSchema = z.object({
   name: z.string().min(1, {
-    message: 'Mandatory Field',
+    message: mandatoryTxt,
   }),
   search: z.string().min(1, {
-    message: 'Mandatory Field',
+    message: mandatoryTxt,
   }),
   // agree: z.literal<boolean>(true, { errorMap: () => ({ message: mandatoryTxt }) }),
   agree: z.boolean(),

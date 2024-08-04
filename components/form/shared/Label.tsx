@@ -15,6 +15,7 @@ type Props = {
   label: string
   disabled?: boolean
   errorMode?: boolean
+  className?: string
 } & (TagDiv | TagLabel)
 
 export default function Label ({
@@ -23,16 +24,17 @@ export default function Label ({
   label,
   disabled = false,
   errorMode = false,
-
+  className: className2,
   ref,
   ...otherProps
 }: Props) {
   // console.log({...otherProps})
   const className = cn(
     'mb-2 block font-semibold text-sm', {
-      'text-gray-400': disabled,
+      'text-app-disabled': disabled,
       'text-app-error': errorMode
-    }
+    },
+    className2
   )
   
   if (useLabelTag) {

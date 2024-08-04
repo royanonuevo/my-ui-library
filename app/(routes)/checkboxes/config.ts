@@ -1,5 +1,6 @@
 import { z } from 'zod'
 
+const mandatoryTxt = 'Mandatory field.'
 export const formSchema = z.object({
   name: z.string().min(1, {
     message: 'Mandatory Field',
@@ -7,14 +8,19 @@ export const formSchema = z.object({
   search: z.string().min(1, {
     message: 'Mandatory Field',
   }),
+  agree: z.boolean(),
   ingredients: z.any().array().min(2, 'Select at least 2 ingredients').max(4),
  
   isDisableFields: z.boolean() // use only for disabling fields, not part of form data
+}).refine((values) => values.agree, {
+  message: mandatoryTxt,
+  path: ['agree']
 })
 
 export const defaultValues: z.infer<typeof formSchema> = {
   name: '',
   search: '',
+  agree: false,
   ingredients: [],
   isDisableFields: false,
 }
@@ -41,6 +47,15 @@ export const formConfig = [
       type: 'input',
       label: 'Search',
       placeholder: 'Search',
+      readOnly: false,
+      disabled
+    }
+  },
+  {
+    name: 'agree',
+    fieldProps: {
+      type: 'checkbox',
+      label: 'I agree to Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
       readOnly: false,
       disabled
     }

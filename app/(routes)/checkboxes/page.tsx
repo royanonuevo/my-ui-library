@@ -70,6 +70,7 @@ export default function Page () {
               {/* row start */}
               <div className='grid grid-cols-2 gap-4 mb-4'>
                 { displayInput('name') }
+                { displayInput('agree') }
                 { displayInput('ingredients') }
                 { displayInput('search') }
               </div>
