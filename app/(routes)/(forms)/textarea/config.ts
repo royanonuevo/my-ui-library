@@ -11,7 +11,6 @@ export const formSchema = z.object({
   feedback: z.string().min(1, {
     message: 'Mandatory Field',
   }),
-  ingredients: z.array(z.any()).min(2, 'Select at least 2 ingredients').max(4),
   isDisableFields: z.boolean() // use only for disabling fields, not part of form data
 })
 
@@ -19,7 +18,6 @@ export const defaultValues: z.infer<typeof formSchema> = {
   dummy1: '',
   concern: '',
   feedback: '',
-  ingredients: [],
   isDisableFields: false,
 }
 
@@ -57,24 +55,10 @@ export const formConfig = [
       type: 'textarea',
       label: 'Feedback',
       readOnly: false,
-      placeholder: 'Enter text..',
-      disabled
-    }
-  },
-  {
-    name: 'ingredients',
-    fieldProps: {
-      type: 'checkbox',
-      label: 'Pick Ingredients:',
-      readOnly: false,
-      disabled,
-      options: [
-        { label: 'Tomato', value: 'Tomato', a:false },
-        { label: 'Pepper', value: 'Pepper' },
-        { label: 'Potato', value: 'Potato' },
-        { label: 'Salt', value: 'Salt' },
-        { label: 'Vinegar', value: 'Vinegar' },
-      ]
+      placeholder: 'Disabled dependency',
+      disabled: (values: any) => {
+        return values.isDisableFields === true || !values.dummy1
+      }
     }
   },
 ]

@@ -6,7 +6,7 @@ import FormLayout from '@/components/FormLayout'
 export default function Page () {
   return (
     <FormLayout
-      title='Checkboxes'
+      title='Textarea'
       formConfig={formConfig}
       formSchema={formSchema}
       defaultValues={defaultValues}
@@ -16,7 +16,6 @@ export default function Page () {
           <div className='grid grid-cols-2 gap-4 mb-4'>
             { displayInput('dummy1') }
             { displayInput('feedback') }
-            { displayInput('ingredients') }
             { displayInput('concern') }
           </div>
         )

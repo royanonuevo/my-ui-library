@@ -74,7 +74,7 @@ const TextArea = forwardRef(({
     inputProps = {
       ...inputProps,
       ...register(fieldArrayName || name, {
-        disabled: otherProps?.disabled
+        // disabled: otherProps?.disabled
       }),
       onKeyUp: handleKeyUp
     }

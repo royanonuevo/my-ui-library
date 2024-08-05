@@ -6,7 +6,7 @@ import FormLayout from '@/components/FormLayout'
 export default function Page () {
   return (
     <FormLayout
-      title='Dropdowns, Checkbox'
+      title='Dropdowns'
       formConfig={formConfig}
       formSchema={formSchema}
       defaultValues={defaultValues}

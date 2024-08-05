@@ -28,9 +28,9 @@ export default function RootLayout({
         <h2 className='mb-1'>Forms:</h2>
         <ol className='list-disc list-inside flex flex-col gap-1'>
           <li><Link href='/inputs' className='underline'>Inputs</Link></li>
-          <li><Link href='/dropdowns' className='underline'>Dropdown</Link></li>
+          <li><Link href='/textarea' className='underline'>Textarea</Link></li>
+          <li><Link href='/dropdowns' className='underline'>Dropdowns</Link></li>
           <li><Link href='/checkboxes' className='underline'>Checkbox</Link></li>
-          <li><Link href='/radio-group' className='underline'>Radio Group</Link></li>
         </ol>
       </aside>
       
