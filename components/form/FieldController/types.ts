@@ -4,11 +4,7 @@ type FieldConfig = {
     type: string,
     label: string,
     [key: string]: any
-  },
-  disabledWhen: null | Function,
-  mandatoryWhen: null | Function,
-  validation: Object,
-  [key: string]: any
+  }
 }
 
 export type FieldControllerProps = {

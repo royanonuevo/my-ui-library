@@ -10,19 +10,15 @@ export const formSchema = z.object({
   dummy2: z.string().min(1, {
     message: mandatoryTxt,
   }),
-  // agree: z.literal<boolean>(true, { errorMap: () => ({ message: mandatoryTxt }) }),
-  agree: z.boolean(),
-  continents: z.string().or(z.number().int()),
+  agree: z.boolean().refine((value) => value === true, {
+    message: mandatoryTxt
+  }),
+  continents: z.string().or(z.number().int()).refine((value) => value !== '', {
+    message: mandatoryTxt
+  }),
   countries: z.any().array().min(1, mandatoryTxt),
   countries2: z.any().array().min(2, 'Select atleast 2 countries').max(3),
-  // categories: z.any().array().min(1, mandatoryTxt),
   isDisableFields: z.boolean() // use only for disabling fields, not part of form data
-}).refine((values) => values.continents !== '', {
-  message: mandatoryTxt,
-  path: ['continents'],
-}).refine((values) => values.agree, {
-  message: mandatoryTxt,
-  path: ['agree']
 })
 
 export const defaultValues: z.infer<typeof formSchema> = {
@@ -32,7 +28,6 @@ export const defaultValues: z.infer<typeof formSchema> = {
   continents: '',
   countries: [],
   countries2: [],
-  // categories: [],
   isDisableFields: false  // use only for disabling fields, not part of form data
 }
 

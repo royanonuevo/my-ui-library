@@ -49,10 +49,8 @@ const isOptionSelected = (option: Option) => {
 
 const changeOption = (option: Option) => {
   if (containsObject(value, option)) {
-    // console.log('1,', value)
     onChange?.(value.filter((o: Option) => !isEqual(o, option)))
   } else {
-    console.log('2,', value)
     onChange?.([...value, option])
   }
 }
@@ -80,7 +78,6 @@ const renderTickBoxes = () => {
             label={label}
             disabled={disabled}
             style={styleLabel}
-            errorMode={hasError}
             className='cursor-default'
           /> 
         ): ''}
@@ -99,7 +96,7 @@ const renderTickBoxes = () => {
                   value={isOptionSelected(option)}
                   handleTick={() => { changeOption(option) }}
                   onBlur={() => {}}
-                  hasError={false}
+                  hasError={hasError}
                   styleLabel={{}}
                   disabled={disabled}
                   index={index}

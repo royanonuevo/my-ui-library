@@ -8,13 +8,11 @@ export const formSchema = z.object({
   dummy2: z.string().min(1, {
     message: 'Mandatory Field',
   }),
-  agree: z.boolean(),
-  ingredients: z.any().array().min(2, 'Select at least 2 ingredients').max(4),
- 
+  agree: z.boolean().refine((value) => value === true, {
+    message: mandatoryTxt
+  }),
+  ingredients: z.array(z.any()).min(2, 'Select at least 2 ingredients').max(4),
   isDisableFields: z.boolean() // use only for disabling fields, not part of form data
-}).refine((values) => values.agree, {
-  message: mandatoryTxt,
-  path: ['agree']
 })
 
 export const defaultValues: z.infer<typeof formSchema> = {
