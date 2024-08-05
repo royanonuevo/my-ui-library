@@ -17,7 +17,7 @@ export default function Page () {
             { displayInput('dummy1') }
             { displayInput('feedback') }
             { displayInput('ingredients') }
-            { displayInput('dummy2') }
+            { displayInput('concern') }
           </div>
         )
       }}

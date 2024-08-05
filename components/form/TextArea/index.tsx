@@ -27,7 +27,6 @@ const TextArea = forwardRef(({
   showErrorMessages = true,
   styleLabel = {},
   appendBulletEveryEnter = false,
-  rows = 3,
   ...otherProps
 }: Props, ref: any) => {
 
@@ -77,7 +76,6 @@ const TextArea = forwardRef(({
       ...register(fieldArrayName || name, {
         disabled: otherProps?.disabled
       }),
-      // className: ''
       onKeyUp: handleKeyUp
     }
   }

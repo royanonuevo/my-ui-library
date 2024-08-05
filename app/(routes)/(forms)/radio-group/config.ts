@@ -5,7 +5,7 @@ export const formSchema = z.object({
   dummy1: z.string().min(1, {
     message: 'Mandatory Field',
   }),
-  dummy2: z.string().min(1, {
+  concern: z.string().min(1, {
     message: 'Mandatory Field',
   }),
   feedback: z.string().min(1, {
@@ -17,7 +17,7 @@ export const formSchema = z.object({
 
 export const defaultValues: z.infer<typeof formSchema> = {
   dummy1: '',
-  dummy2: '',
+  concern: '',
   feedback: '',
   ingredients: [],
   isDisableFields: false,
@@ -40,12 +40,14 @@ export const formConfig = [
     }
   },
   {
-    name: 'dummy2',
+    name: 'concern',
     fieldProps: {
-      type: 'input',
-      label: 'Dummy2',
-      placeholder: 'dummy',
+      type: 'textarea',
+      label: 'Concern (with auto Bullet)',
+      placeholder: 'Enter your concern',
       readOnly: false,
+      appendBulletEveryEnter: true,
+      rows: 5,
       disabled
     }
   },
