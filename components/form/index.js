@@ -6,19 +6,19 @@ import DropDown from './DropDown'
 // import DropDown2 from './DropDown2'
 // import SearchTags from './SearchTags'
 import CheckBox from './CheckBox'
-// import TextArea from './TextArea'
+import TextArea from './TextArea'
 // import RadioButtons from './RadioButtons'
 // import Slider from './Slider'
 
 export {
   FieldController,
   Input,
+  TextArea,
   DropDown,
   // DropDown2,
   CheckBox,
   // AutoComplete,
   // SearchTags,
-  // TextArea,
   // RadioButtons,
   // Slider
 }

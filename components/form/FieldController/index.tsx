@@ -1,9 +1,9 @@
 import { 
   Input,
+  TextArea,
   CheckBox,
   DropDown,
   // DropDown2,
-  // TextArea,
   // Slider,
   // RadioButtons,
   // SearchTags
@@ -263,18 +263,17 @@ const FieldController = ({
     //     />
     //   )
 
-    // case 'textarea': 
-    //     return (
-    //       <TextArea 
-    //         {...otherFieldProps}
-    //         name={name}
-    //         fieldArrayName={fieldArrayName}
-    //         label={label}
-    //         error={errorText}
-    //         register={register}
-    //         rows={otherFieldProps?.rows || 3}
-    //       />
-    //     )
+    case 'textarea': 
+        return (
+          <TextArea 
+            {...otherFieldProps}
+            name={name}
+            fieldArrayName={fieldArrayName}
+            label={label}
+            error={errorText}
+            register={register}
+          />
+        )
 
     default:
       return (

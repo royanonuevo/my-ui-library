@@ -74,13 +74,6 @@
   }
 
   .app-input {
-    background-color: #fff;
-  }
-  .app-input-disabled {
-    background-color: theme('colors.gray.200') ;
-  }
-
-  .app-field.disabled {
-    color: theme('colors.gray.400')
+    @apply w-full bg-transparent rounded-md focus:outline-none placeholder:text-app-placeholder py-[10px] px-[16px];
   }
 }

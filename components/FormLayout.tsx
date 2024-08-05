@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { z } from 'zod'
+import { useModalConfirm } from '@/hooks/useModalConfirm'
 
 type Props = {
   children: any
@@ -21,14 +22,13 @@ export default function FormLayout ({
   formSchema,
   defaultValues
 }: Props) {
+  const modalConfirm = useModalConfirm()
 
   const hookForm = useForm<z.infer<typeof formSchema>>({
     mode: 'onTouched',
     resolver: zodResolver(formSchema),
     defaultValues
   })
-
-  // console.log('hookForm', hookForm)
   
   const { 
     handleSubmit, 
@@ -40,7 +40,15 @@ export default function FormLayout ({
   const { isDisableFields } = getValues() 
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => { 
-    console.log('onSubmit', values) // eslint-disable-line
+    modalConfirm({
+      title: 'Form Submission',
+      description: 'This will submit the form, are you sure?'
+    })
+    .then(() => {
+      console.log('onSubmit', values) // eslint-disable-line
+    })
+    .catch(() => {})
+    
   }
 
   const displayInput = (name: string) => {

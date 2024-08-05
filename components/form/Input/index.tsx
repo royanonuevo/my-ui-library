@@ -15,7 +15,6 @@ type InputProps = {
   appendRightContent?: React.ReactElement | null
   appendLeftContent?: React.ReactElement | null
   showErrorMessages?: boolean
-  variantSize?: 'small' | 'medium'
   togglePassword?: boolean
   debounceDuration?: number
   onChange?: any
@@ -32,7 +31,6 @@ const Input = forwardRef(({
   appendLeftContent = null,
   appendRightContent = null,
   showErrorMessages = true,
-  variantSize = 'medium',
   togglePassword = false,
   debounceDuration = 0,
   ...otherProps
@@ -66,16 +64,11 @@ const Input = forwardRef(({
     type,
     label,
     name: name,
+    id: otherProps?.id || name,
     ...otherProps,
     ...onChangeProps,
-    className: cn(
-      'peer w-full bg-white rounded-md flex-1',
-      'focus:outline-none',
-      'placeholder:text-app-placeholder',
-      {
-        'cursor-not-allowed bg-app-disabled-inputs2': otherProps?.disabled,
-        'text-sm py-[8px] px-[12px]': variantSize === 'small',
-        'text-base py-[10px] px-[16px]': variantSize === 'medium',
+    className: cn({
+        'app-input': true, // global.css
         'pl-[7px]': appendLeftContent,
         'pr-[7px]': appendRightContent
       }

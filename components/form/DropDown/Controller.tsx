@@ -86,11 +86,10 @@ const Controller = forwardRef(({
       })}
     >
       <div 
-        className={cn(
-          'w-full py-[10px] px-[16px] pr-[10px] flex items-center outline-none', {
-            '': isFocusController
-          }
-        )} 
+        className={cn({
+          'app-input': true, // global.css'
+          'flex items-center ': true
+        })} 
         tabIndex={0} 
         ref={ref}
         onClick={handleClick}
