@@ -31,6 +31,7 @@ export default function RootLayout({
           <li><Link href='/textarea' className='underline'>Textarea</Link></li>
           <li><Link href='/dropdowns' className='underline'>Dropdowns</Link></li>
           <li><Link href='/checkboxes' className='underline'>Checkbox</Link></li>
+          <li><Link href='/radios' className='underline'>Radios</Link></li>
         </ol>
       </aside>
       
