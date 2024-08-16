@@ -16,7 +16,8 @@ export const formSchema = z.object({
   continents: z.string().or(z.number().int()).refine((value) => value !== '', {
     message: mandatoryTxt
   }),
-  countries: z.any().array().min(1, mandatoryTxt),
+  // countries: z.any().array().min(1, mandatoryTxt),
+  countries: z.object({}).passthrough().or(z.undefined()).refine((value) => { return value }, { message: mandatoryTxt }),
   countries2: z.any().array().min(2, 'Select atleast 2 countries').max(3),
   isDisableFields: z.boolean() // use only for disabling fields, not part of form data
 })
@@ -26,7 +27,7 @@ export const defaultValues: z.infer<typeof formSchema> = {
   dummy2: '',
   agree: false,
   continents: '',
-  countries: [],
+  countries: undefined,
   countries2: [],
   isDisableFields: false  // use only for disabling fields, not part of form data
 }
@@ -83,10 +84,9 @@ export const formConfig = [
     name: 'countries',
     fieldProps: {
       type: 'dropdown',
-      label: 'Countries (return [{}])',
-      returnType: 'array',
-      multipleSelection: false,
-      disableToggleOnSelectedOption: false,
+      label: 'Countries (return {})',
+      returnType: 'object',
+      disableToggleOnSelectedOption: true,
       placeholder: 'Select countries (disabled dpndncy)',
       options: countryOptions,
       disabled: (values: any, name: any) => { // eslint-disable-line
@@ -100,7 +100,6 @@ export const formConfig = [
       type: 'dropdown',
       label: 'Countries2 (return [{},{},{}]]',
       returnType: 'array',
-      multipleSelection: true,
       placeholder: 'Select countries2',
       options: countryOptions,
       disabled

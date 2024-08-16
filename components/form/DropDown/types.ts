@@ -8,13 +8,20 @@ type Placeholder = string
 
 
 export const RETURN_TYPE_VALUE = 'value'
+export const RETURN_TYPE_OBJECT = 'object'
 export const RETURN_TYPE_ARRAY = 'array'
-type ReturnType = typeof RETURN_TYPE_VALUE | typeof RETURN_TYPE_ARRAY
+type ReturnType = typeof RETURN_TYPE_VALUE | typeof RETURN_TYPE_OBJECT | typeof RETURN_TYPE_ARRAY
 
-export type SingleSelectProps = {
+export type SingleStringSelectProps = {
   returnType?: typeof RETURN_TYPE_VALUE
   value: string
   onChange?: (value: string) => void // eslint-disable-line
+}
+
+export type SingleObjectSelectProps = {
+  returnType?: typeof RETURN_TYPE_OBJECT
+  value: SelectOption | undefined
+  onChange?: (value: SelectOption | undefined) => void // eslint-disable-line
 }
 
 export type MultipleSelectProps = {
@@ -24,7 +31,6 @@ export type MultipleSelectProps = {
 }
 
 export type SelectProps = {
-  multipleSelection?: boolean
   removeOptionWhenSelected?: boolean
   disableToggleOnSelectedOption?: boolean,
   options?: SelectOption[]
@@ -39,14 +45,13 @@ export type SelectProps = {
   readOnly?: boolean
   styleController?: React.CSSProperties | undefined
   styleLabel?: React.CSSProperties | undefined
-} & (SingleSelectProps | MultipleSelectProps)
+} & (SingleStringSelectProps | SingleObjectSelectProps | MultipleSelectProps)
 
 
 export type ControllerProps = {
   value: any // TODO should not be any!!
   options: SelectOption[],
   returnType?: ReturnType
-  multipleSelection?: boolean
   placeholder: Placeholder
   changeOption: Function
   // controllerRef: React.RefObject<HTMLDivElement>

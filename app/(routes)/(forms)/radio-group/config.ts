@@ -3,23 +3,19 @@ import { z } from 'zod'
 const mandatoryTxt = 'Mandatory field.'
 export const formSchema = z.object({
   dummy1: z.string().min(1, {
-    message: mandatoryTxt
+    message: mandatoryTxt,
   }),
   dummy2: z.string().min(1, {
-    message: mandatoryTxt
+    message: mandatoryTxt,
   }),
-  agree: z.boolean().refine((value) => value === true, {
-    message: mandatoryTxt
-  }),
-  ingredients: z.array(z.any()).min(2, 'Select at least 2 ingredients').max(4),
+  purpose: z.object({}).passthrough().or(z.undefined()).refine((value) => { return value }, { message: mandatoryTxt }),
   isDisableFields: z.boolean() // use only for disabling fields, not part of form data
 })
 
 export const defaultValues: z.infer<typeof formSchema> = {
   dummy1: '',
   dummy2: '',
-  agree: false,
-  ingredients: [],
+  purpose: undefined,
   isDisableFields: false,
 }
 
@@ -50,27 +46,18 @@ export const formConfig = [
     }
   },
   {
-    name: 'agree',
+    name: 'purpose',
     fieldProps: {
-      type: 'checkbox',
-      label: 'I agree to Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      readOnly: false,
-      disabled
-    }
-  },
-  {
-    name: 'ingredients',
-    fieldProps: {
-      type: 'checkbox',
-      label: 'Pick Ingredients:',
+      type: 'radio-group',
+      label: 'Purpose',
       readOnly: false,
       disabled,
       options: [
-        { label: 'Tomato', value: 'Tomato', a:false },
-        { label: 'Pepper', value: 'Pepper' },
-        { label: 'Potato', value: 'Potato' },
-        { label: 'Salt', value: 'Salt' },
-        { label: 'Vinegar', value: 'Vinegar' },
+        { label: 'Demand', value: 'Demand', a:false },
+        { label: 'Request', value: 'Request' },
+        { label: 'Notify', value: 'Notify' },
+        { label: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', value: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' },
+        { label: 'Notice', value: 'Notice' },
       ]
     }
   },

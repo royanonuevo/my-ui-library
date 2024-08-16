@@ -2,12 +2,13 @@ import FieldController from './FieldController'
 
 // import AutoComplete from './AutoComplete'
 import Input from './Input'
+import TextArea from './TextArea'
 import DropDown from './DropDown'
+import CheckBox from './CheckBox'
+import RadioGroup from './RadioGroup'
 // import DropDown2 from './DropDown2'
 // import SearchTags from './SearchTags'
-import CheckBox from './CheckBox'
-import TextArea from './TextArea'
-// import RadioButtons from './RadioButtons'
+
 // import Slider from './Slider'
 
 export {
@@ -17,6 +18,7 @@ export {
   DropDown,
   // DropDown2,
   CheckBox,
+  RadioGroup
   // AutoComplete,
   // SearchTags,
   // RadioButtons,

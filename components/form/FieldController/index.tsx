@@ -5,7 +5,7 @@ import {
   DropDown,
   // DropDown2,
   // Slider,
-  // RadioButtons,
+  RadioGroup,
   // SearchTags
 } from '@/components/form'
 import { FieldControllerProps } from './types'
@@ -108,6 +108,7 @@ const FieldController = ({
                 value={value}
                 onChange={(o: any) => {
                   const keyName = fieldArrayName || name
+                  console.log(keyName, o)
                   setValue(keyName, o, {
                     shouldValidate: true,
                     shouldDirty: true
@@ -162,6 +163,33 @@ const FieldController = ({
           render={({ field }) => {
             return (
               <CheckBox 
+                label={label}
+                value={value}
+                options={options || []}
+                onChange={(o: any) => {
+                  const keyName = fieldArrayName || name
+                  setValue(keyName, o, {
+                    shouldValidate: true,
+                    shouldDirty: true
+                  })
+                }}
+                onBlur={field.onBlur}
+                error={errorText}
+                disabled={isFieldDisabled}
+              />
+            )
+          }}
+        />
+      )
+
+    case 'radio-group': 
+      return (
+        <Controller
+          name={fieldArrayName || name}
+          control={control}
+          render={({ field }) => {
+            return (
+              <RadioGroup 
                 label={label}
                 value={value}
                 options={options || []}

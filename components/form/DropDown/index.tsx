@@ -5,7 +5,8 @@ import {
   SelectOption, 
   SelectProps, 
   RETURN_TYPE_ARRAY, 
-  RETURN_TYPE_VALUE 
+  RETURN_TYPE_VALUE, 
+  RETURN_TYPE_OBJECT
 } from './types'
 import Controller from './Controller'
 import { cn } from '@/lib/utils'
@@ -17,9 +18,8 @@ export type { SelectOption }
 
 export default function DropDown ({
   returnType,
-  multipleSelection = false,
-  removeOptionWhenSelected = true, // applicable only in multipleSelection = true
-  disableToggleOnSelectedOption = false, // applicable only in multipleSelection = false
+  removeOptionWhenSelected = true, // applicable only in multipleSelection = true TODO
+  disableToggleOnSelectedOption = false, // applicable only in multipleSelection = false TODO
   options = [],
   optionOneLiner = true,
   label,
@@ -42,7 +42,7 @@ export default function DropDown ({
   const hasError = Boolean(error)
   let filteredOptions = [...options]
 
-  if (returnType === RETURN_TYPE_ARRAY && multipleSelection && removeOptionWhenSelected) {
+  if (returnType === RETURN_TYPE_ARRAY && removeOptionWhenSelected) {
     const listOfValues = [...value]
     filteredOptions = filteredOptions.filter(o => !containsObject(listOfValues, o))
   }
@@ -74,18 +74,18 @@ export default function DropDown ({
       if (disableToggleOnSelectedOption && isEqual(option?.value, value)) return
       onChange?.(!isEqual(option?.value, value)? option?.value : '')
     }
-    
+
+    if (returnType === RETURN_TYPE_OBJECT) {
+      const isEqualValue = isEqual(option, value)
+      if (disableToggleOnSelectedOption && isEqualValue) return
+      onChange?.(!isEqualValue? option : undefined)
+    }
+
     if (returnType === RETURN_TYPE_ARRAY) {
-      if (multipleSelection) {
-        if (containsObject(value, option)) {
-          onChange?.(value.filter(o => !isEqual(o, option)))
-        } else {
-          onChange?.([...value, option])
-        }
+      if (containsObject(value, option)) {
+        onChange?.(value.filter(o => !isEqual(o, option)))
       } else {
-        const isEqualValue = isEqual(option, value.length? value[0] : [])
-        if (disableToggleOnSelectedOption && isEqualValue) return
-        onChange?.(!isEqualValue? [option] : [])
+        onChange?.([...value, option])
       }
     } 
   }
@@ -95,6 +95,10 @@ export default function DropDown ({
 
     if (returnType === RETURN_TYPE_VALUE) {
       return isEqual(option?.value, value)
+    }
+
+    if (returnType === RETURN_TYPE_OBJECT) {
+      return isEqual(option, value)
     }
     
     if (returnType === RETURN_TYPE_ARRAY) {
@@ -174,7 +178,6 @@ export default function DropDown ({
         options={options}
         placeholder={placeholder}
         returnType={returnType}
-        multipleSelection={multipleSelection}
         changeOption={changeOption}
         ref={controllerRef}
         handleClick={() => {

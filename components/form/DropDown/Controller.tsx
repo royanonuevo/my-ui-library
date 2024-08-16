@@ -3,7 +3,8 @@ import {
   SelectOption, 
   ControllerProps,
   RETURN_TYPE_ARRAY, 
-  RETURN_TYPE_VALUE 
+  RETURN_TYPE_VALUE, 
+  RETURN_TYPE_OBJECT
 } from './types'
 import { cn } from '@/lib/utils'
 import IconChevronDown from './IconChevronDown'
@@ -14,7 +15,6 @@ const Controller = forwardRef(({
   options,
   placeholder,
   returnType,
-  multipleSelection,
   changeOption,
   // controllerRef,
   handleClick,
@@ -34,11 +34,11 @@ const Controller = forwardRef(({
       return foundObj? foundObj?.label : renderPlaceholder()
     }
 
-    if (returnType === RETURN_TYPE_ARRAY && !multipleSelection) {
-      return value[0]?.label? value[0]?.label : renderPlaceholder()
+    if (returnType === RETURN_TYPE_OBJECT) {
+      return value?.label? value?.label : renderPlaceholder()
     }
 
-    if (returnType === RETURN_TYPE_ARRAY && multipleSelection) {
+    if (returnType === RETURN_TYPE_ARRAY) {
       if (!value.length) return renderPlaceholder()
 
       return (
