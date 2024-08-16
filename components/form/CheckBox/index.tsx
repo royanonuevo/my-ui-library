@@ -33,7 +33,9 @@ const CheckBox = ({
  const hasError = error? true : false
 
  const handleTick = () => {
-  onChange(!value)
+  if (!disabled) {
+    onChange(!value)
+  }
  }
 
  const handleBlur = (e: React.FocusEvent) => {
@@ -48,6 +50,8 @@ const isOptionSelected = (option: Option) => {
 }
 
 const changeOption = (option: Option) => {
+  if (disabled) { return }
+  
   if (containsObject(value, option)) {
     onChange?.(value.filter((o: Option) => !isEqual(o, option)))
   } else {
