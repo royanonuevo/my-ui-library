@@ -23,7 +23,9 @@ export default function CustomerFields ({}: Props) {
             <div key={`education-${index}`} className='p-4 bg-white'>
               <div className='flex justify-between items-center mb-4'>
                 <div>Customer #{index + 1}</div>
-                <Button type='button' onClick={() => remove(index)} variant='default' size='sm' className='h-[25px]'>Remove</Button>
+                {fields.length > 1 && (
+                  <Button type='button' onClick={() => remove(index)} variant='default' size='sm' className='h-[25px]'>Remove</Button>
+                )}
               </div>
                 
               <div className='grid grid-cols-2 gap-4 mb-4'>
