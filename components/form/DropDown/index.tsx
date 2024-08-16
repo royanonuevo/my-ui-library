@@ -41,7 +41,6 @@ export default function DropDown ({
   const [isFocusController, setFocusController] = useState<boolean>(false)
   const hasError = Boolean(error)
   let filteredOptions = [...options]
-  // console.log('value', value)
 
   if (returnType === RETURN_TYPE_ARRAY && multipleSelection && removeOptionWhenSelected) {
     const listOfValues = [...value]

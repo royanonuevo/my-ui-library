@@ -1,7 +1,7 @@
 'use client'
 
 import { FieldController, CheckBox } from '@/components/form'
-import { useForm } from 'react-hook-form'
+import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { z } from 'zod'
@@ -51,11 +51,12 @@ export default function FormLayout ({
     
   }
 
-  const displayInput = (name: string) => {
+  const displayInput = (name: string, fieldArrayName: string | null = null) => {
     return (
       <FieldController 
         name={name} 
-        fieldsConfig={formConfig}  
+        fieldsConfig={formConfig}
+        fieldArrayName={fieldArrayName}
         hookForm={hookForm}
       />
     )
@@ -63,6 +64,11 @@ export default function FormLayout ({
 
   const toggleDisableFields = () => {
     setValue('isDisableFields', !isDisableFields) 
+  }
+
+  const hookMethods = {
+    ...hookForm,
+    displayInput
   }
 
   return (
@@ -81,13 +87,16 @@ export default function FormLayout ({
         <hr className='mt-5' />
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className='grid flex-col gap-y-5 text-sm'>
-        <div>
-          { children(displayInput) }
-        </div>
-        
-        <Button type='submit' className='w-full' variant='default'>Submit</Button>
-      </form>
+      {/* NOTE: "<FormProvider>" use specifically in multi array fields else you can remove this */}
+      <FormProvider {...hookMethods}> 
+        <form onSubmit={handleSubmit(onSubmit)} className='grid flex-col gap-y-5 text-sm'>
+          <div>
+            { children(displayInput) }
+          </div>
+          
+          <Button type='submit' className='w-full' variant='default'>Submit</Button>
+        </form>
+      </FormProvider>
     </>
   )
 }

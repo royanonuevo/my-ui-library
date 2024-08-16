@@ -20,7 +20,7 @@ const FieldController = ({
 }: FieldControllerProps) => {
   let fieldConfig
   let fieldArrayConfig: any
-
+  
   if (fieldArrayName) {
     const splitName = fieldArrayName.split('.')
     const arrayName = splitName[0]
@@ -30,9 +30,10 @@ const FieldController = ({
       index: splitName[1],
       child: arrayChildName
     }
-    const arrayField: any = fieldsConfig.find(f => f.name === arrayName)
-    if (arrayField) {
-      const childFields: any[] = arrayField?.validation.of
+    const parentField: any = fieldsConfig.find(f => f.name === arrayName)
+
+    if (parentField) {
+      const childFields: any[] = parentField?.childFields
       fieldConfig = childFields.find((aF: any) => aF.name === arrayChildName)
       if (!fieldConfig) {
         return <>{`Config for '${name}' not found.`}</>
@@ -64,7 +65,15 @@ const FieldController = ({
   if ('disabled' in otherFieldProps) {
     if (typeof otherFieldProps.disabled === 'function') {
       const values = watch()
-      isFieldDisabled = otherFieldProps.disabled(values, name)
+      let paramIndex = null
+      let paramName = name
+
+      if (fieldArrayName) {
+        paramIndex = fieldArrayConfig.index
+        paramName = fieldArrayConfig.name
+      }
+
+      isFieldDisabled = otherFieldProps.disabled(values, paramName, paramIndex)
     } else {
       isFieldDisabled = otherFieldProps.disabled
     }

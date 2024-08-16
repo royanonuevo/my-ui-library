@@ -25,7 +25,7 @@ const Controller = forwardRef(({
   readOnly
 }: ControllerProps, ref: any) => {
 
-  const renderPlaceholder = () => <span className='text-app-placeholder'>{ placeholder }</span>
+  const renderPlaceholder = () => <span className='text-app-placeholder whitespace-nowrap'>{ placeholder }</span>
 
   const renderValue = () => {
     if (returnType === RETURN_TYPE_VALUE) {
@@ -88,7 +88,7 @@ const Controller = forwardRef(({
       <div 
         className={cn({
           'app-input': true, // global.css'
-          'flex items-center ': true
+          'flex items-center': true
         })} 
         tabIndex={0} 
         ref={ref}

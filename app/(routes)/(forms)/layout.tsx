@@ -21,7 +21,7 @@ export default function RootLayout({
           <li>`onBlur` should work</li>
           <li>when click title/label will focus the field</li>
           <li>tab should work</li>
-          <li>disabled dependeny from other field should work</li>
+          <li>disabled dependency from other field should work</li>
           <li>Browser Compatibility</li>
         </ul>
         <hr className='my-10' />
@@ -31,7 +31,8 @@ export default function RootLayout({
           <li><Link href='/textarea' className='underline'>Textarea</Link></li>
           <li><Link href='/dropdowns' className='underline'>Dropdowns</Link></li>
           <li><Link href='/checkboxes' className='underline'>Checkbox</Link></li>
-          <li><Link href='/radios' className='underline'>Radios</Link></li>
+          <li><Link href='/radios' className='underline'>Radios (TODO)</Link></li>
+          <li><Link href='/array' className='underline'>Array of Fields</Link></li>
         </ol>
       </aside>
       
