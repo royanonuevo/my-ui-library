@@ -10,7 +10,6 @@ type Props = {
   label?: string
   id?: string
   name?: string
-  fieldArrayName?: string
   error?: any
   register?: Function
   showErrorMessages?: boolean
@@ -21,7 +20,6 @@ type Props = {
 const TextArea = forwardRef(({
   label = '',
   name,
-  fieldArrayName = '',
   error = '',
   register,
   showErrorMessages = true,
@@ -73,7 +71,7 @@ const TextArea = forwardRef(({
   if (register) {
     inputProps = {
       ...inputProps,
-      ...register(fieldArrayName || name, {
+      ...register(name, {
         // disabled: otherProps?.disabled
       }),
       onKeyUp: handleKeyUp

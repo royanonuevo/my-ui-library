@@ -271,8 +271,7 @@ const FieldController = ({
         return (
           <TextArea 
             {...otherFieldProps}
-            name={name}
-            fieldArrayName={fieldArrayName}
+            name={fieldArrayName || name}
             label={label}
             error={errorText}
             register={register}
@@ -284,9 +283,8 @@ const FieldController = ({
         <Input 
           {...otherFieldProps}
           type={type}
-          name={name}
+          name={fieldArrayName || name}
           value={value}
-          fieldArrayName={fieldArrayName}
           label={label}
           error={errorText}
           register={register}

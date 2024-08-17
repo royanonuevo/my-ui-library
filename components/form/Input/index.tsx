@@ -8,7 +8,6 @@ type InputProps = {
   label?: string
   id?: string
   name?: string
-  fieldArrayName?: string
   type?: string
   error?: any
   register?: Function
@@ -25,7 +24,6 @@ const Input = forwardRef(({
   label = '',
   name,
   value = '',
-  fieldArrayName = '',
   error = '',
   register,
   appendLeftContent = null,
@@ -79,7 +77,7 @@ const Input = forwardRef(({
   if (register) {
     inputProps = {
       ...inputProps,
-      ...register(fieldArrayName || name, {
+      ...register(name, {
         // disabled: otherProps?.disabled
       })
     }
