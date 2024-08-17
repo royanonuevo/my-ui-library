@@ -1,15 +1,17 @@
 'use client'
 
-import { formConfig, formSchema, defaultValues } from './config'
+import { formConfig, formSchema, defaultValues, defaultWithValues } from './config'
 import FormLayout from '@/components/FormLayout'
 
 export default function Page () {
+
   return (
     <FormLayout
       title='Dropdowns'
       formConfig={formConfig}
       formSchema={formSchema}
       defaultValues={defaultValues}
+      defaultWithValues={defaultWithValues}
     >
       {(displayInput: any) => {
         return (

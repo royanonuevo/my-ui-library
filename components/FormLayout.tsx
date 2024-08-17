@@ -6,6 +6,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { z } from 'zod'
 import { useModalConfirm } from '@/hooks/useModalConfirm'
+import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
+import { useRouter  } from 'next/navigation'
 
 type Props = {
   children: any
@@ -13,6 +16,7 @@ type Props = {
   formConfig: any
   formSchema: any
   defaultValues: any
+  defaultWithValues?: any
 }
 
 export default function FormLayout ({ 
@@ -20,14 +24,19 @@ export default function FormLayout ({
   title,
   formConfig,
   formSchema,
-  defaultValues
+  defaultValues,
+  defaultWithValues = null
 }: Props) {
+  const router = useRouter()
   const modalConfirm = useModalConfirm()
+  const searchParams = useSearchParams()
+  const defaultValuesIndicator = 'with-default-values'
+  const withDefaultValues = searchParams.get(defaultValuesIndicator) || '0'
 
   const hookForm = useForm<z.infer<typeof formSchema>>({
     mode: 'onTouched',
     resolver: zodResolver(formSchema),
-    defaultValues
+    defaultValues: withDefaultValues == '1'? (defaultWithValues || defaultValues) : defaultValues
   })
   
   const { 
@@ -76,7 +85,29 @@ export default function FormLayout ({
       <div className='pb-5'>
         <div className='flex justify-between items-center'>
           <h1 className='text-2xl'>{ title }</h1>
-          <div className='text-sm'>
+          <div className='text-xs flex flex-col text-right'>
+            {withDefaultValues == '1'? (
+              <span 
+                className='underline mb-1 cursor-pointer' 
+                onClick={() => {
+                  router.push(`?${defaultValuesIndicator}=0`)
+                  setTimeout(() => {
+                    window.location.reload()
+                  }, 500)
+                }}
+              >With Empty Values</span>
+            ) : (
+              <span 
+                className='underline mb-1 cursor-pointer' 
+                onClick={() => {
+                  router.push(`?${defaultValuesIndicator}=1`)
+                  setTimeout(() => {
+                    window.location.reload()
+                  }, 500)
+                }}
+              >With Default Values</span>
+            )}
+            
             <CheckBox 
               value={isDisableFields} 
               label='Disabled All Fields' 

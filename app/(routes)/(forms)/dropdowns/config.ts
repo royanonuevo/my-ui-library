@@ -32,6 +32,19 @@ export const defaultValues: z.infer<typeof formSchema> = {
   isDisableFields: false  // use only for disabling fields, not part of form data
 }
 
+export const defaultWithValues: z.infer<typeof formSchema> = {
+  dummy1: 'dummy1',
+  dummy2: 'dummy2',
+  agree: true,
+  continents: 'Asia',
+  countries: {label: 'China', value: 'China'},
+  countries2: [
+    {label: 'Philippines', value: 'Philippines', a: false},
+    {label: 'Australia', value: 'Australia'},
+  ],
+  isDisableFields: false  // use only for disabling fields, not part of form data
+}
+
 const disabled = (values: any, name: any) => { // eslint-disable-line
   return values.isDisableFields === true
 }
