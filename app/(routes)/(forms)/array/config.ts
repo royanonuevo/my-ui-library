@@ -8,7 +8,7 @@ const customersSchema = z.object({
   continents: z.string().or(z.number().int()).refine((value) => value !== '', {
     message: mandatoryTxt
   }),
-  countries: z.any().array().min(1, mandatoryTxt),
+  countries: z.object({}).passthrough().or(z.undefined()).refine((value) => { return value }, { message: mandatoryTxt }),
 })
 
 export const formSchema = z.object({
@@ -27,7 +27,7 @@ export const formSchema = z.object({
 
 export const initialCustomerValue = {
   name: '',
-  countries: [],
+  countries: undefined,
   continents: ''
 }
 export const defaultValues: z.infer<typeof formSchema> = {
@@ -55,9 +55,9 @@ const customerChildFields = [{
   name: 'continents',
   fieldProps: {
     type: 'dropdown',
-    label: 'Continents (return Single "")',
+    label: 'Continent (return Single "")',
     returnType: 'value',
-    placeholder: 'Select continents',
+    placeholder: 'Select continent',
     options: continentOptions,
     disabled
   }
@@ -65,14 +65,13 @@ const customerChildFields = [{
   name: 'countries',
   fieldProps: {
     type: 'dropdown',
-    label: 'Countries (return [{}])',
-    returnType: 'array',
-    multipleSelection: false,
-    disableToggleOnSelectedOption: false,
+    label: 'Countries (return {})',
+    returnType: 'object',
+    disableToggleOnSelectedOption: true,
     placeholder: 'Select countries (disabled dpndncy)',
     options: countryOptions,
-    disabled: (values: any, name: any, index: number) => { // eslint-disable-line
-      return values.isDisableFields === true || !values?.[name]?.[index]?.continents
+    disabled: (values: any, name: any, index:number) => { // eslint-disable-line
+      return values.isDisableFields === true || !values[name][index]?.continents
     }
   }
 }]

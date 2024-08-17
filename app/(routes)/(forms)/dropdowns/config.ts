@@ -86,9 +86,9 @@ export const formConfig = [
     name: 'continents',
     fieldProps: {
       type: 'dropdown',
-      label: 'Continents (return Single "")',
+      label: 'Continent (return Single "")',
       returnType: 'value',
-      placeholder: 'Select continents',
+      placeholder: 'Select continent',
       options: continentOptions,
       disabled
     }

@@ -11,7 +11,6 @@ import {
 import { FieldControllerProps } from './types'
 import { Controller } from 'react-hook-form'
 
-
 const FieldController = ({
   name,
   fieldArrayName,
@@ -99,7 +98,6 @@ const FieldController = ({
           name={fieldArrayName || name}
           control={control}
           render={({ field }) => {
-            // if (name === 'countries2') console.log(otherFieldProps)
             return (
               <DropDown 
                 {...otherFieldProps}
@@ -108,7 +106,6 @@ const FieldController = ({
                 value={value}
                 onChange={(o: any) => {
                   const keyName = fieldArrayName || name
-                  console.log(keyName, o)
                   setValue(keyName, o, {
                     shouldValidate: true,
                     shouldDirty: true
@@ -263,36 +260,6 @@ const FieldController = ({
     //             }}
     //             onBlur={field.onBlur}
     //             options={getOptions()}
-    //             error={errorText}
-    //           />
-    //         )
-    //       }}
-    //     />
-    //   )
-
-    // case 'radio': 
-    //   return (
-    //     <Controller
-    //       name={name}
-    //       control={control}
-    //       render={({ field }) => {
-    //         if (field.ref) {
-    //           // @ts-ignore
-    //           delete field.ref 
-    //         }
-    //         return (
-    //           <RadioButtons 
-    //             {...otherFieldProps}
-    //             name={name}
-    //             label={label}
-    //             options={fieldProps.options}
-    //             value={value}
-    //             onChange={(o: any) => {
-    //               setValue(name, o, {
-    //                 shouldValidate: true,
-    //                 shouldDirty: true
-    //               })
-    //             }}
     //             error={errorText}
     //           />
     //         )
