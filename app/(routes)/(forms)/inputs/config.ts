@@ -32,7 +32,7 @@ export const formSchema = z.object({
 })
 
 export const defaultValues: z.infer<typeof formSchema> = {
-  name: 'Jay Smith',
+  name: '',
   email: '',
   password: '',
   password2: '',
@@ -40,6 +40,19 @@ export const defaultValues: z.infer<typeof formSchema> = {
   disabledInput: 'this is a disabled input',
   appendLeftContent: '',
   appendRightContent: '',
+  
+  isDisableFields: false
+}
+
+export const defaultWithValues: z.infer<typeof formSchema> = {
+  name: 'Jay Smith',
+  email: 'jay@yahooo.co',
+  password: '3214',
+  password2: '3214',
+  readOnlyInput: 'this is a read-only input',
+  disabledInput: 'this is a disabled input',
+  appendLeftContent: 'left',
+  appendRightContent: 'right',
   
   isDisableFields: false
 }

@@ -36,11 +36,11 @@ export const defaultWithValues: z.infer<typeof formSchema> = {
   dummy1: 'dummy1',
   dummy2: 'dummy2',
   agree: true,
-  continents: 'Asia',
-  countries: {label: 'China', value: 'China'},
+  continents: continentOptions[2].value,
+  countries: countryOptions[3],
   countries2: [
-    {label: 'Philippines', value: 'Philippines', a: false},
-    {label: 'Australia', value: 'Australia'},
+    countryOptions[1],
+    countryOptions[2]
   ],
   isDisableFields: false  // use only for disabling fields, not part of form data
 }

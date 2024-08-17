@@ -1,5 +1,13 @@
 import { z } from 'zod'
 
+const ingredientsOption = [
+  { label: 'Tomato', value: 'Tomato', a:false },
+  { label: 'Pepper', value: 'Pepper' },
+  { label: 'Potato', value: 'Potato' },
+  { label: 'Salt', value: 'Salt' },
+  { label: 'Vinegar', value: 'Vinegar' },
+]
+
 const mandatoryTxt = 'Mandatory field.'
 export const formSchema = z.object({
   dummy1: z.string().min(1, {
@@ -20,6 +28,17 @@ export const defaultValues: z.infer<typeof formSchema> = {
   dummy2: '',
   agree: false,
   ingredients: [],
+  isDisableFields: false,
+}
+
+export const defaultWithValues: z.infer<typeof formSchema> = {
+  dummy1: 'dummy text',
+  dummy2: 'test',
+  agree: true,
+  ingredients: [
+    ingredientsOption[1],
+    ingredientsOption[2]
+  ],
   isDisableFields: false,
 }
 
@@ -65,13 +84,7 @@ export const formConfig = [
       label: 'Pick Ingredients:',
       readOnly: false,
       disabled,
-      options: [
-        { label: 'Tomato', value: 'Tomato', a:false },
-        { label: 'Pepper', value: 'Pepper' },
-        { label: 'Potato', value: 'Potato' },
-        { label: 'Salt', value: 'Salt' },
-        { label: 'Vinegar', value: 'Vinegar' },
-      ]
+      options: ingredientsOption
     }
   },
 ]

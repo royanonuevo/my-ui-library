@@ -21,6 +21,13 @@ export const defaultValues: z.infer<typeof formSchema> = {
   isDisableFields: false,
 }
 
+export const defaultWithValues: z.infer<typeof formSchema> = {
+  dummy1: 'dummy',
+  concern: '• my concern1\n• my concern2\n',
+  feedback: 'my feedback',
+  isDisableFields: false,
+}
+
 const disabled = (values: any, name: any) => { // eslint-disable-line
   return values.isDisableFields === true
 }
