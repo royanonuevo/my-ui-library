@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button'
 import { z } from 'zod'
 import { useModalConfirm } from '@/hooks/useModalConfirm'
 import { useRouter, useSearchParams  } from 'next/navigation'
-import { Suspense } from 'react'
 
 type Props = {
   children: any
@@ -80,7 +79,7 @@ export default function FormLayout ({
   }
 
   return (
-    <Suspense>
+    <>
       <div className='pb-5'>
         <div className='flex justify-between items-center'>
           <h1 className='text-2xl'>{ title }</h1>
@@ -127,6 +126,6 @@ export default function FormLayout ({
           <Button type='submit' className='w-full' variant='default'>Submit</Button>
         </form>
       </FormProvider>
-    </Suspense>
+    </>
   )
 }
