@@ -6,8 +6,6 @@ export default async function Page () {
   
   return (
     <>
-      
-      
       <ul>
         {
           data.map((post: any, index: number) => {
