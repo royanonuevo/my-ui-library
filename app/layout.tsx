@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google"
 import { cn } from "@/lib/utils"
-import { ConfirmServiceProvider } from '@/hooks/useModalConfirm'
+import AppProvider from "@/components/AppProvider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -30,9 +30,9 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ConfirmServiceProvider>
+        <AppProvider>
           {children}
-        </ConfirmServiceProvider>
+        </AppProvider>
       </body>
     </html>
   )
