@@ -2,7 +2,7 @@ import { getTodos } from '@/lib/apis/todos'
 
 export default async function Page () {
   const data = await getTodos()
-  await new Promise((resolve) => setTimeout(resolve, 4000));
+  // await new Promise((resolve) => setTimeout(resolve, 4000));
   
   return (
     <>
