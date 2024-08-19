@@ -1,4 +1,4 @@
-const BASE_URL = '/api/todos'
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL + '/api/todos'
 
 export const getTodos = async () => {
   const url = BASE_URL
