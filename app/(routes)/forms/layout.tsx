@@ -25,6 +25,7 @@ export default function RootLayout({
             <li>tab should work</li>
             <li>disabled dependency from other field should work</li>
             <li>Browser Compatibility</li>
+            <li className='text-app-error'>TODO: Add indeterminate in Checkbox</li>
           </ul>
           <hr className='my-10' />
           <h2 className='mb-1'>Forms:</h2>
