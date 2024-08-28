@@ -30,6 +30,8 @@ export default function RootLayout({
           <ol className='list-disc list-inside flex flex-col gap-1'>
             <li><Link href='/fetch/client-side' className='underline'>Client Side (React Query)</Link></li>
             <li><Link href='/fetch/server-side' className='underline'>Fetching in Server Side</Link></li>
+            <li><Link href='/fetch/redux-static-data' className='underline'>Get Static Data (RTK)</Link></li>
+            <li><Link href='/fetch/redux-toolkit' className='underline'>TODO (RTK)</Link></li>
           </ol>
         </>
       }
