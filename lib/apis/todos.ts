@@ -1,8 +1,10 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL + '/api/todos'
+
+const APP_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL + '/api'
+const TODOS_BASE_URL = APP_BASE_URL + '/todos'
+
 
 export const getTodos = async () => {
-  const url = BASE_URL
-  return await fetch(url).then((res) => {
+  return await fetch(TODOS_BASE_URL).then((res) => {
     if (!res.ok) {
       throw new Error("Failed to fetch");
     }
@@ -11,8 +13,7 @@ export const getTodos = async () => {
 }
 
 export const postTodo = async (newPost: any) => {
-  const url = BASE_URL
-  return await fetch(url, {
+  return await fetch(TODOS_BASE_URL, {
     method: 'POST',
     body: JSON.stringify(newPost)
   }).then((res) => {
@@ -25,7 +26,7 @@ export const postTodo = async (newPost: any) => {
 }
 
 export const deleteTodo = async (todoId: string) => {
-  const url = `${BASE_URL}/${todoId}`
+  const url = `${TODOS_BASE_URL}/${todoId}`
   return await fetch(url, {
     method: 'DELETE'
   }).then((res) => {
@@ -36,3 +37,5 @@ export const deleteTodo = async (todoId: string) => {
     return res.json()
   })
 }
+
+

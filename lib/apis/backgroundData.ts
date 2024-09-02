@@ -1,3 +1,5 @@
+import { createAsyncThunk } from '@reduxjs/toolkit'
+
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL + '/api/static-data'
 
 export const getStaticDataStates = async () => {
@@ -19,3 +21,17 @@ export const getStaticDataCountries = async () => {
     return res.json()
   })
 }
+
+export const fetchStaticDataStates = createAsyncThunk(
+  'bgData/fetchStaticDataStates',
+  async () => {
+    return getStaticDataStates()
+  },
+)
+
+export const fetchStaticDataCountries = createAsyncThunk(
+  'bgData/fetchStaticDataCountries',
+  async () => {
+    return getStaticDataCountries()
+  },
+)

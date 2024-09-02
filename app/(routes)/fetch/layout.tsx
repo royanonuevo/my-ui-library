@@ -28,10 +28,11 @@ export default function RootLayout({
           <hr className='my-10' />
           <h2 className='mb-1'>Fetch Strategies:</h2>
           <ol className='list-disc list-inside flex flex-col gap-1'>
-            <li><Link href='/fetch/client-side' className='underline'>Client Side (React Query)</Link></li>
+            <li><Link href='/fetch/react-query' className='underline'>Client Side (React Query)</Link></li>
             <li><Link href='/fetch/server-side' className='underline'>Fetching in Server Side</Link></li>
             <li><Link href='/fetch/redux-static-data' className='underline'>Get Static Data (RTK)</Link></li>
-            <li><Link href='/fetch/redux-toolkit' className='underline'>TODO (RTK)</Link></li>
+            <li><Link href='/fetch/redux-toolkit' className='underline'>Todo List (RTK)</Link></li>
+            <li><Link href='/fetch/redux-toolkit-query' className='underline'>Todo List (RTK Query)</Link></li>
           </ol>
         </>
       }

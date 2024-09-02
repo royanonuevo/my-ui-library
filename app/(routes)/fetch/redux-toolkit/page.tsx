@@ -8,6 +8,7 @@ export default function Page () {
 
   return (
     <>
+      <h2 className='font-bold mb-5'>Redux Toolkit</h2>
       <TodoForm />
       <TodoList />
     </>

@@ -1,13 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit'
 import todoReducer from './features/todo-slice'
-import staticDataReducer from './features/static-data-slice'
+import backgroundDataReducer from './features/background-data-slice'
+import { appApi } from '@/lib/apis/app-rtk-query'
+
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       todoReducer,
-      staticDataReducer
+      backgroundDataReducer,
+      [appApi.reducerPath]: appApi.reducer,
     },
+
+    // Adding the api middleware enables caching, invalidation, polling,
+    // and other useful features of `rtk-query`.
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(appApi.middleware),
+
+    // dev tools extension
     devTools: true
   })
 }

@@ -1,12 +1,12 @@
-// import { getTodos } from '@/lib/apis/todos'
+import { getTodos } from '@/lib/apis/todos'
 
 export default async function Page () {
-  // const data = await getTodos()
-  // await new Promise((resolve) => setTimeout(resolve, 4000));
+  const data = await getTodos()
+  await new Promise((resolve) => setTimeout(resolve, 4000));
   
   return (
     <>
-      {/* <ul>
+      <ul>
         {
           data.map((post: any, index: number) => {
             return (
@@ -14,7 +14,7 @@ export default async function Page () {
             )
           })
         }
-      </ul> */}
+      </ul>
     </>
   )
 }

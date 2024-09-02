@@ -32,6 +32,7 @@ export default function Page () {
 
   return (
     <>
+      <h2 className='font-bold mb-5'>Tarnstack Query</h2>
       <TodoForm onSubmit={(values: any) => {
         postMutation.mutate({
           title: values.title

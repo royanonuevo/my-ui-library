@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getStaticDataStates, getStaticDataCountries } from '@/lib/apis/staticData'
+import { fetchStaticDataStates, fetchStaticDataCountries } from '@/lib/apis/backgroundData'
 
 // Define a type for the slice state
 interface stateJobsLocation {
@@ -12,19 +12,6 @@ const initialState: stateJobsLocation = {
   countries: []
 }
 
-export const fetchStaticDataStates = createAsyncThunk(
-  'staticData/fetchStaticDataStates',
-  async () => {
-    return getStaticDataStates()
-  },
-)
-
-export const fetchStaticDataCountries = createAsyncThunk(
-  'staticData/fetchStaticDataCountries',
-  async () => {
-    return getStaticDataCountries()
-  },
-)
 
 export const staticDataSlice = createSlice({
   name: 'staticData',
