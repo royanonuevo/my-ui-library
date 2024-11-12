@@ -6,7 +6,6 @@ export default function HomePage () {
       <section className='w-full max-w-[600px] bg-white p-8 px-8 rounded-lg'>
         <ul>
           <li>Let&lsquo;s check the <Link href='/forms/inputs' className='underline'>forms</Link></li>
-          <li>Let&lsquo;s check the <Link href='/fetch/react-query' className='underline'>fetch</Link></li>
           <li>Let&lsquo;s check the <Link href='/sign-in/' className='underline'>sign in</Link></li>
         </ul>
       </section>

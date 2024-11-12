@@ -79,10 +79,11 @@ const customerChildFields = [{
 }, {
   name: 'timeHours',
   fieldProps: {
-    type: 'input-time-hours',
+    type: 'digits',
     label: '24 Hours',
-    placeholder: 'Ex. 10',
+    placeholder: '12',
     readOnly: false,
+    digitsLimit: 24,
     disabled
   }
 }]
