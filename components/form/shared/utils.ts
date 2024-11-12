@@ -1,3 +1,9 @@
+export const padZero = (num: number, size: number) => {
+  let s = num + ''
+  while (s.length < size) s = '0' + s
+  return s
+}
+
 export const isEqual = (value1: any, value2: any): boolean => {
   // Check if the two values are of different types
   if (typeof value1 !== typeof value2) {

@@ -1,5 +1,6 @@
 import { 
   Input,
+  Digits,
   TextArea,
   CheckBox,
   DropDown,
@@ -277,6 +278,35 @@ const FieldController = ({
             register={register}
           />
         )
+
+    case 'digits':
+      return (
+        <Controller
+          name={fieldArrayName || name}
+          control={control}
+          render={({ field }) => {
+            return (
+              <Digits 
+                {...otherFieldProps}
+                label={label}
+                value={value}
+                onChange={(e: any) => {
+                  const value = e.target.value
+                  const keyName = fieldArrayName || name
+                  setValue(keyName, value, {
+                    shouldValidate: true,
+                    shouldDirty: true
+                  })
+                }}
+                // register={register}
+                onBlur={field.onBlur}
+                error={errorText}
+                disabled={isFieldDisabled}
+              />
+            )
+          }}
+        />
+      )
 
     default:
       return (

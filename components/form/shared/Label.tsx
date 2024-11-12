@@ -30,7 +30,7 @@ export default function Label ({
 }: Props) {
   // console.log({...otherProps})
   const className = cn(
-    'mb-2 block font-semibold text-sm', {
+    'mb-2 block font-medium text-sm', {
       'text-app-disabled': disabled,
       'text-app-error': errorMode
     },

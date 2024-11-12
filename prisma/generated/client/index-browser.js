@@ -121,6 +121,18 @@ exports.Prisma.TodoScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.CountriesScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  value: 'value'
+};
+
+exports.Prisma.StatesScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  value: 'value'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -133,7 +145,9 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  Todo: 'Todo'
+  Todo: 'Todo',
+  Countries: 'Countries',
+  States: 'States'
 };
 
 /**

@@ -2,6 +2,7 @@ import FieldController from './FieldController'
 
 // import AutoComplete from './AutoComplete'
 import Input from './Input'
+import Digits from './Digits'
 import TextArea from './TextArea'
 import DropDown from './DropDown'
 import CheckBox from './CheckBox'
@@ -14,6 +15,7 @@ import RadioGroup from './RadioGroup'
 export {
   FieldController,
   Input,
+  Digits,
   TextArea,
   DropDown,
   // DropDown2,

@@ -1,14 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
+import authReducer from './features/auth-slice'
 import todoReducer from './features/todo-slice'
-import backgroundDataReducer from './features/background-data-slice'
-import { appApi } from '@/lib/apis/app-rtk-query'
+import bgDataReducer from './features/bg-data-slice'
+import appApi from '@/redux/apis/appApi'
 
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
+      authReducer,
       todoReducer,
-      backgroundDataReducer,
+      bgDataReducer,
       [appApi.reducerPath]: appApi.reducer,
     },
 

@@ -16,7 +16,7 @@ type InputProps = {
   showErrorMessages?: boolean
   togglePassword?: boolean
   debounceDuration?: number
-  onChange?: any
+  // onChange?: any
 } & React.ComponentProps<'input'> & React.RefAttributes<any>
 
 const Input = forwardRef(({
@@ -37,7 +37,6 @@ const Input = forwardRef(({
   const [inputValue, setInputValue] = useState<any>(value)
   const [inputEventValue, setInputEventValue] = useState<any>(null)
 
-  // console.log('value', value)
   if (type === 'password' && togglePassword && showPassword) {
     type = 'text'
   }
@@ -45,6 +44,7 @@ const Input = forwardRef(({
   let onChangeProps: any = {}
 
   if (debounceDuration > 0) {
+    // console.log('value', debounceDuration)
     onChangeProps = {
       value: inputValue,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +54,8 @@ const Input = forwardRef(({
     }
   } else {
     onChangeProps = {
-      value
+      value,
+      onChange: otherProps.onChange
     }
   }
 
@@ -73,6 +74,7 @@ const Input = forwardRef(({
     )
   }
 
+  // console.log('inputProps 1', inputProps)
   // if react hook form register mounted
   if (register) {
     inputProps = {

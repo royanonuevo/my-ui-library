@@ -22,3 +22,15 @@ model Todo {
   createAt    DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Countries {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  label String?
+  value String?
+}
+
+model States {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  label String?
+  value String?
+}
