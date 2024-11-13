@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { FieldConfig, FieldTypes } from '@/components/form'
 
 const ingredientsOption = [
   { label: 'Tomato', value: 'Tomato', a:false },
@@ -46,7 +47,7 @@ const disabled = (values: any, name: any) => { // eslint-disable-line
   return values.isDisableFields === true
 }
 
-export const formConfig = [
+export const formConfig: FieldConfig<FieldTypes>[] = [
   {
     name: 'dummy1',
     fieldProps: {

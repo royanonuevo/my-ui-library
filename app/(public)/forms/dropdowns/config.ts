@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { continentOptions, countryOptions } from './data'
+import { FieldConfig, FieldTypes } from '@/components/form'
 
 const mandatoryTxt = 'Mandatory field.'
 
@@ -49,7 +50,7 @@ const disabled = (values: any, name: any) => { // eslint-disable-line
   return values.isDisableFields === true
 }
 
-export const formConfig = [
+export const formConfig: FieldConfig<FieldTypes>[] = [
   {
     name: 'dummy1',
     fieldProps: {
@@ -68,7 +69,7 @@ export const formConfig = [
       label: 'Dummy2',
       placeholder: 'dummy (disabled dpndncy)',
       readOnly: false,
-      disabled: (values: any, name: any) => { // eslint-disable-line
+      disabled: (values: any, name: any): boolean => { // eslint-disable-line
         return values.isDisableFields === true || !values.dummy1
       }
     }
@@ -118,15 +119,15 @@ export const formConfig = [
       disabled
     }
   },
-  {
-    name: 'categories',
-    fieldProps: {
-      type: 'dropdown2',
-      label: 'Categories (Multiple)',
-      multiple: true,
-      placeholder: 'Select categories',
-      options: countryOptions,
-      disabled
-    }
-  },
+  // {
+  //   name: 'categories',
+  //   fieldProps: {
+  //     type: 'dropdown2',
+  //     label: 'Categories (Multiple)',
+  //     multiple: true,
+  //     placeholder: 'Select categories',
+  //     options: countryOptions,
+  //     disabled
+  //   }
+  // },
 ]

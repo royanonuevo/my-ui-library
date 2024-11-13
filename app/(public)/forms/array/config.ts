@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { continentOptions, countryOptions } from './data'
+import { FieldConfig, FieldTypes } from '@/components/form'
 
 const mandatoryTxt = 'Mandatory field.'
 
@@ -44,7 +45,7 @@ const disabled = (values: any, name: any) => { // eslint-disable-line
   return values.isDisableFields === true
 }
 
-const customerChildFields = [{
+const customerChildFields: FieldConfig<FieldTypes>[] = [{
   name: 'name',
   fieldProps: {
     type: 'input',

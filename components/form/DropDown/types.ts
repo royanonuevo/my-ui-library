@@ -30,7 +30,7 @@ export type MultipleSelectProps = {
   onChange?: (value: SelectOption[]) => void // eslint-disable-line
 }
 
-export type SelectProps = {
+export type DropDownProps = {
   removeOptionWhenSelected?: boolean
   disableToggleOnSelectedOption?: boolean,
   options?: SelectOption[]

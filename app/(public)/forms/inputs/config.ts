@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { FieldConfig, FieldTypes } from '@/components/form'
 
 
 export const formSchema = z.object({
@@ -61,7 +62,7 @@ const disabled = (values: any, name: any) => { // eslint-disable-line
   return values.isDisableFields === true
 }
 
-export const formConfig = [
+export const formConfig: FieldConfig<FieldTypes>[] = [
   {
     name: 'name',
     fieldProps: {

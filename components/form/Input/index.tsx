@@ -4,15 +4,15 @@ import Label from '../shared/Label'
 import ErrorText from '../shared/ErrorText'
 import Field from '../shared/Field'
 
-type InputProps = {
+export type InputProps = {
   label?: string
   id?: string
   name?: string
   type?: string
   error?: any
   register?: Function
-  appendRightContent?: React.ReactElement | null
-  appendLeftContent?: React.ReactElement | null
+  appendRightContent?: React.ReactNode | null
+  appendLeftContent?: React.ReactNode | null
   showErrorMessages?: boolean
   togglePassword?: boolean
   debounceDuration?: number

@@ -1,15 +1,15 @@
-import { Input } from '@/components/form'
+import Input, { InputProps } from '@/components/form/Input'
 
-type Props = {
+export type DigitsProps = {
   digitsLimit: number,
   onChange: any
-}
+} & InputProps
 
 const Digits = ({
   digitsLimit,
   onChange,
   ...otherFieldProps
-}: Props) => {
+}: DigitsProps) => {
   return (
     <Input 
       {...otherFieldProps}

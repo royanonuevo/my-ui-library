@@ -9,7 +9,7 @@ type Option = {
   [key: string]: any
 }
 
-type Props = {
+export type RadioGroupProps = {
  label?: string
  value: any
  options: Option[]
@@ -29,7 +29,7 @@ const RadioGroup = ({
  error = '',
  styleLabel,
  disabled = false
-}: Props) => { 
+}: RadioGroupProps) => { 
  const hasError = error? true : false
 
  const handleTick = () => {

@@ -8,6 +8,12 @@ import {
   // Slider,
   RadioGroup,
   // SearchTags
+
+  TYPE_DIGITS,
+  TYPE_TEXTAREA,
+  TYPE_DROPDOWN,
+  TYPE_CHECKBOX,
+  TYPE_RADIO_GROUP
 } from '@/components/form'
 import { FieldControllerProps } from './types'
 import { Controller } from 'react-hook-form'
@@ -93,7 +99,7 @@ const FieldController = ({
   }
 
   switch (type) {
-    case 'dropdown': 
+    case TYPE_DROPDOWN: 
       return (
         <Controller
           name={fieldArrayName || name}
@@ -153,7 +159,7 @@ const FieldController = ({
     //     />
     //   )
 
-    case 'checkbox': 
+    case TYPE_CHECKBOX: 
       return (
         <Controller
           name={fieldArrayName || name}
@@ -180,7 +186,7 @@ const FieldController = ({
         />
       )
 
-    case 'radio-group': 
+    case TYPE_RADIO_GROUP: 
       return (
         <Controller
           name={fieldArrayName || name}
@@ -268,7 +274,7 @@ const FieldController = ({
     //     />
     //   )
 
-    case 'textarea': 
+    case TYPE_TEXTAREA: 
         return (
           <TextArea 
             {...otherFieldProps}
@@ -279,7 +285,7 @@ const FieldController = ({
           />
         )
 
-    case 'digits':
+    case TYPE_DIGITS:
       return (
         <Controller
           name={fieldArrayName || name}
@@ -298,7 +304,6 @@ const FieldController = ({
                     shouldDirty: true
                   })
                 }}
-                // register={register}
                 onBlur={field.onBlur}
                 error={errorText}
                 disabled={isFieldDisabled}

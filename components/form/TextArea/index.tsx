@@ -6,7 +6,7 @@ import ErrorText from '../shared/ErrorText'
 import Label from '../shared/Label'
 import Field from '../shared/Field'
 
-type Props = {
+export type TextAreaProps = {
   label?: string
   id?: string
   name?: string
@@ -26,7 +26,7 @@ const TextArea = forwardRef(({
   styleLabel = {},
   appendBulletEveryEnter = false,
   ...otherProps
-}: Props, ref: any) => {
+}: TextAreaProps, ref: any) => {
 
   const bullet = '\u2022'
   const bulletWithSpace = `${bullet} `

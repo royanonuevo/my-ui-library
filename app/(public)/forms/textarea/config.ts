@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { FieldConfig, FieldTypes } from '@/components/form'
 
 const mandatoryTxt = 'Mandatory field.'
 export const formSchema = z.object({
@@ -32,7 +33,7 @@ const disabled = (values: any, name: any) => { // eslint-disable-line
   return values.isDisableFields === true
 }
 
-export const formConfig = [
+export const formConfig: FieldConfig<FieldTypes>[] = [
   {
     name: 'dummy1',
     fieldProps: {

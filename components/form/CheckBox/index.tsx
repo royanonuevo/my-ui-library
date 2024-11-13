@@ -9,7 +9,7 @@ type Option = {
   [key: string]: any
 }
 
-type Props = {
+export type CheckBoxProps = {
  label?: string
  value: any
  options?: Option[]
@@ -29,7 +29,7 @@ const CheckBox = ({
  error = '',
  styleLabel,
  disabled = false
-}: Props) => { 
+}: CheckBoxProps) => { 
  const hasError = error? true : false
 
  const handleTick = () => {

@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react'
 import { 
   SelectOption, 
-  SelectProps, 
+  DropDownProps, 
   RETURN_TYPE_ARRAY, 
   RETURN_TYPE_VALUE, 
   RETURN_TYPE_OBJECT
@@ -14,7 +14,7 @@ import { isEqual, containsObject } from '../shared/utils'
 import Label from '../shared/Label'
 import ErrorText from '../shared/ErrorText'
 
-export type { SelectOption }
+export type { SelectOption, DropDownProps }
 
 export default function DropDown ({
   returnType,
@@ -34,7 +34,7 @@ export default function DropDown ({
   maxOptionsHeight = '15rem',
   styleController,
   styleLabel = { cursor: 'default'}
-}: SelectProps) {
+}: DropDownProps) {
   const controllerRef = useRef<HTMLDivElement>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null)
