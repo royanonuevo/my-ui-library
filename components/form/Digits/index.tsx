@@ -2,7 +2,7 @@ import Input, { InputProps } from '@/components/form/Input'
 
 export type DigitsProps = {
   digitsLimit: number,
-  onChange: any
+  onChange?: any
 } & InputProps
 
 const Digits = ({

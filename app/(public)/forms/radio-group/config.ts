@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { FieldConfig, FieldTypes } from '@/components/form'
+import { FieldConfig } from '@/components/form'
 
 const purposeOptions = [
   { label: 'Demand', value: 'Demand', a:false },
@@ -39,7 +39,7 @@ const disabled = (values: any, name: any) => { // eslint-disable-line
   return values.isDisableFields === true
 }
 
-export const formConfig: FieldConfig<FieldTypes>[] = [
+export const formConfig: FieldConfig[] = [
   {
     name: 'dummy1',
     fieldProps: {
@@ -66,7 +66,6 @@ export const formConfig: FieldConfig<FieldTypes>[] = [
     fieldProps: {
       type: 'radio-group',
       label: 'Purpose',
-      readOnly: false,
       disabled,
       options: purposeOptions
     }

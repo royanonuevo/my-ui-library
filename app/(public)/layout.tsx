@@ -23,7 +23,6 @@ type RootLayoutProps = {
 export default function RootLayout({ 
   children 
 }: RootLayoutProps) {
-  console.log('roboto.className', roboto.className)
   return (
     <html lang="en" suppressHydrationWarning>
       <head />

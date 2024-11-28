@@ -35,34 +35,21 @@ export const TYPE_DROPDOWN = 'dropdown'
 export const TYPE_CHECKBOX = 'checkbox'
 export const TYPE_RADIO_GROUP = 'radio-group'
 
-// Define the map with all types and their respective props
-type InputPropsCustom = Omit<InputProps, 'disabled'>
-type FieldPropsMap = {
-  [TYPE_INPUT]: InputPropsCustom
-  [TYPE_PASSWORD]: InputPropsCustom
-  [TYPE_DIGITS]: DigitsProps
-  [TYPE_TEXTAREA]: TextAreaProps
-  [TYPE_DROPDOWN]: DropDownProps
-  [TYPE_CHECKBOX]: CheckBoxProps
-  [TYPE_RADIO_GROUP]: RadioGroupProps
-  // ...other types as needed
-}
+type InputTypeProps = { type: typeof TYPE_INPUT } & InputProps
+type InputPasswordProps = { type: typeof TYPE_PASSWORD } & InputProps
+type DigitsTypeProps = { type: typeof TYPE_DIGITS } & DigitsProps
+type TextareaTypeProps = { type: typeof TYPE_TEXTAREA } & TextAreaProps
+type InputDropDownProps = { type: typeof TYPE_DROPDOWN } & Omit<DropDownProps, 'value'>
+type InputCheckboxProps = { type: typeof TYPE_CHECKBOX } & Omit<CheckBoxProps, 'value' | 'onChange'>
+type InputRadioProps = { type: typeof TYPE_RADIO_GROUP } & Omit<RadioGroupProps, 'value' | 'onChange'>
 
-// Get a union of all possible type keys automatically
-export type FieldTypes = keyof FieldPropsMap // This automatically gives 'input' | 'digits' | 'dropdown' | ...
-export type FieldConfig<T extends FieldTypes> = {
+type FieldProps = InputTypeProps | InputPasswordProps | DigitsTypeProps | TextareaTypeProps | InputDropDownProps | InputCheckboxProps | InputRadioProps
+export type FieldConfig = {
   name: string
   fieldProps: {
-    type: T
+    type: typeof TYPE_INPUT | typeof TYPE_PASSWORD | typeof TYPE_DIGITS | typeof TYPE_TEXTAREA | typeof TYPE_DROPDOWN | typeof TYPE_CHECKBOX |  typeof TYPE_RADIO_GROUP
     disabled?: any
-  } & FieldPropsMap[T] 
+  } & FieldProps
 }
-// export type FieldConfig<T extends FieldTypes = FieldTypes> = {
-//   name: string
-//   fieldProps: {
-//     type: T
-//     disabled?: any
-//   } & (T extends keyof FieldPropsMap? FieldPropsMap[T]: FieldPropsMap['input'])
-// }
 
 export default FieldController

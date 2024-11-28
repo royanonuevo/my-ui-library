@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { FieldConfig, FieldTypes } from '@/components/form'
+import { FieldConfig } from '@/components/form'
 
 export const formSchema = z.object({
   debounce: z.string().min(3, {
@@ -32,7 +32,7 @@ const disabled = (values: any, name: any):boolean => { // eslint-disable-line
   return values.isDisableFields === true
 }
 
-export const formConfig: FieldConfig<FieldTypes>[] = [
+export const formConfig: FieldConfig[] = [
   {
     name: 'debounce',
     fieldProps: {

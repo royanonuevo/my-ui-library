@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { continentOptions, countryOptions } from './data'
-import { FieldConfig, FieldTypes } from '@/components/form'
+import { FieldConfig } from '@/components/form'
 
 const mandatoryTxt = 'Mandatory field.'
 
@@ -50,7 +50,7 @@ const disabled = (values: any, name: any) => { // eslint-disable-line
   return values.isDisableFields === true
 }
 
-export const formConfig: FieldConfig<FieldTypes>[] = [
+export const formConfig: FieldConfig[] = [
   {
     name: 'dummy1',
     fieldProps: {
@@ -79,7 +79,6 @@ export const formConfig: FieldConfig<FieldTypes>[] = [
     fieldProps: {
       type: 'checkbox',
       label: 'I agree to Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      readOnly: false,
       disabled
     }
   },
