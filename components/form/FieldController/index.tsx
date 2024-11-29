@@ -127,38 +127,6 @@ const FieldController = ({
         />
       )
     
-    // case 'dropdown2': 
-    //   return (
-    //     <Controller
-    //       name={name}
-    //       control={control}
-    //       render={({ field }) => {
-    //         if (field.ref) {
-    //           // @ts-ignore
-    //           delete field.ref 
-    //         }
-
-    //         return (
-    //           <DropDown2
-    //             {...otherFieldProps}
-    //             // {...field}
-    //             label={label}
-    //             options={getOptions()}
-    //             value={value}
-    //             onChange={(o: any) => {
-    //               setValue(name, o, {
-    //                 shouldValidate: true,
-    //                 shouldDirty: true
-    //               })
-    //             }}
-    //             onBlur={field.onBlur}
-    //             error={errorText}
-    //           />
-    //         )
-    //       }}
-    //     />
-    //   )
-
     case TYPE_CHECKBOX: 
       return (
         <Controller
@@ -212,78 +180,6 @@ const FieldController = ({
           }}
         />
       )
-      
-
-    // case 'slider': 
-    //   return (
-    //     <Controller
-    //       name={name}
-    //       control={control}
-    //       render={({ field }) => {
-    //         if (field.ref) {
-    //           // @ts-ignore
-    //           delete field.ref 
-    //         }
-
-    //         return (
-    //           <Slider 
-    //             label={label}
-    //             error={errorText}
-    //             value={value}
-    //             onChange={(o: any) => {
-    //               setValue(name, o, {
-    //                 shouldValidate: true,
-    //                 shouldDirty: true
-    //               })
-    //             }}
-    //             disabled={otherFieldProps.disabled}
-    //             sliderProps={fieldProps?.sliderProps}
-    //           />
-    //         )
-    //       }}
-    //     />
-    //   )
-    
-    // case 'search-tags':
-    //   return (
-    //     <Controller
-    //       name={name}
-    //       control={control}
-    //       render={({ field }) => {
-    //         if (field.ref) {
-    //           // @ts-ignore
-    //           delete field.ref 
-    //         }
-    //         return (
-    //           <SearchTags 
-    //             {...otherFieldProps}
-    //             label={label}
-    //             value={value}
-    //             onChange={(o: any) => {
-    //               setValue(name, o, {
-    //                 shouldValidate: true,
-    //                 shouldDirty: true
-    //               })
-    //             }}
-    //             onBlur={field.onBlur}
-    //             options={getOptions()}
-    //             error={errorText}
-    //           />
-    //         )
-    //       }}
-    //     />
-    //   )
-
-    case TYPE_TEXTAREA: 
-        return (
-          <TextArea 
-            {...otherFieldProps}
-            name={fieldArrayName || name}
-            label={label}
-            error={errorText}
-            register={register}
-          />
-        )
 
     case TYPE_DIGITS:
       return (
@@ -310,6 +206,17 @@ const FieldController = ({
               />
             )
           }}
+        />
+      )
+
+    case TYPE_TEXTAREA: 
+      return (
+        <TextArea 
+          {...otherFieldProps}
+          name={fieldArrayName || name}
+          label={label}
+          error={errorText}
+          register={register}
         />
       )
 

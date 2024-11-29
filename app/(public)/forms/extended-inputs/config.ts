@@ -55,7 +55,7 @@ export const formConfig: FieldConfig[] = [
       label: 'Hours (digits)',
       placeholder: '08',
       readOnly: false,
-      digitsLimit: 24,
+      digitsLimit: 23,
       disabled
     }
   },
